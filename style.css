@@ -1,234 +1,590 @@
+/* ===== Variables ===== */
 :root {
-  --BackgroundColor: rgb(50, 50, 50);
-  --BackgroundColorLight: rgb(100, 100, 100);
-  --BackgroundColorDark: rgb(25, 25, 25);
+    --ColorBackground_1: #0a0b1a;
+    --ColorBackground_2: #14172a;
+    --ColorHue_1: 265;
+    --ColorHue_2: 220;
+    --Saturation: 70%;
+    --Light_1: 55%;
+    --Light_2: 45%;
 
-  --AccentColor1: rgb(255, 100, 0);
-  --AccentColorLight1: rgb(255, 130, 0);
-  --AccentColorDark1: rgb(240, 80, 0);
+    --muted: #b6c3ff;
+    --blue: #33c3ff;
+    --purple: #8b5cf6;
+    --glass: rgba(255, 255, 255, 0.07);
+    --stroke: ;
+    --blur: 5px;
+    --r: 20px;
 }
+
+/* ===== Basics ===== */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html {
-  min-width: 100%;
-  min-height: 100%;
-
-  font-family: Arial, Helvetica, sans-serif;
-
-  scroll-behavior: smooth;
+html,
+body {
+    height: 100%;
 }
 
 body {
-  min-width: 100%;
-  min-height: 100vh;
+    background-color: black;
+    display: grid;
+    justify-content: center;
+    color: white;
 
-  display: grid;
-  grid-template-rows: 0fr 1fr 0fr;
+    font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
 
-  background-image: url("Resources/Black-Triangle-Polygon-Background.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-
-  color: white;
+    scroll-behavior: smooth;
 }
 
-/*======================================== Begin Header ========================================*/
+#Main {
+    position: relative;
 
-header {
-  width: 100%;
-  height: 400px;
+    width: 1100px;
+    height: 100%;
 
-  background-color: var(--BackgroundColorDark);
+    display: flex;
+    flex-direction: column;
 }
 
-#HeaderContent {
-  z-index: 999;
-  top: 0px;
-  width: 100%;
-  height: 100px;
+/* ===== Background ===== */
 
-  background-color: inherit;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  border-bottom: 2px solid var(--AccentColor1);
+#Background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(120vmax 120vmax at 10% 10%, var(--ColorBackground_2), transparent 60%), radial-gradient(120vmax 120vmax at 90% 90%, #0b0e22, transparent 60%), linear-gradient(180deg, var(--ColorBackground_1), #0b0d1f);
+    isolation: isolate;
 }
 
-.HeaderContentFixed {
-  position: fixed;
+.BackgroundGradient {
+    position: absolute;
+    inset: -50vmax;
+    background: radial-gradient(closest-side at 30% 30%, hsla(var(--ColorHue_1), var(--Saturation), var(--Light_1), 0.35), transparent 60%), radial-gradient(closest-side at 70% 70%, hsla(var(--ColorHue_2), var(--Saturation), var(--Light_1), 0.35), transparent 60%),
+        radial-gradient(closest-side at 80% 20%, hsla(calc(var(--ColorHue_1) - 20), var(--Saturation), 55%, 0.25), transparent 60%), radial-gradient(closest-side at 20% 80%, hsla(calc(var(--ColorHue_2) + 20), var(--Saturation), 50%, 0.2), transparent 60%);
+    filter: blur(40px) saturate(120%);
+    animation: BackcgroundSlide 32s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
 }
 
-#HeaderAvatarWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@keyframes BackcgroundSlide {
+    0% {
+        transform: translate3d(-6%, -4%, 0) rotate(-2deg) scale(1.05);
+    }
+    50% {
+        transform: translate3d(6%, 4%, 0) rotate(2deg) scale(1.06);
+    }
+    100% {
+        transform: translate3d(-3%, 3%, 0) rotate(-1deg) scale(1.04);
+    }
+}
+
+.BackgroundBlobs {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.BackgroundBlob {
+    position: absolute;
+    left: calc(var(--CoordX) * 1vw);
+    top: calc(var(--CoordY) * 1vh);
+    width: calc(var(--Size) * 1vmin);
+    height: calc(var(--Size) * 1vmin);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, hsla(var(--Hue), 80%, 60%, 0.55), transparent 60%);
+    filter: blur(30px);
+    mix-blend-mode: screen;
+    animation: BackgroundBlobFloat var(--Duration) s ease-in-out calc(var(--Delay) * 1s) infinite alternate;
+}
+
+@keyframes BackgroundBlobFloat {
+    from {
+        transform: translate3d(-4vmin, -3vmin, 0) scale(0.95);
+    }
+    to {
+        transform: translate3d(4vmin, 3vmin, 0) scale(1.05);
+    }
+}
+
+#BackgroundStars {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .BackgroundGradient,
+    .BackgroundBlob {
+        animation: none;
+    }
+}
+
+/* ===== Header & Footer ===== */
+
+#MainHeader {
+    height: 380px;
+}
+
+#MH_Content {
+    width: 1100px;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+}
+
+#MH_Content.MH_ContentFixed {
+    position: fixed;
+    margin: 0px;
+}
+
+.MH_ContentFixed .MH_Left,
+.MH_ContentFixed .MH_Right {
+    display: none;
+}
+
+.MH_Left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#MH_PreTitle {
+    font-size: 1rem;
+    opacity: 0.7;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.3rem 0;
+}
+
+#MH_Title {
+    width: fit-content;
+    font-size: 60px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    background: linear-gradient(90deg, #4f9eff, #b46bff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientFlow 8s ease infinite;
+    text-shadow: 0 0 30px rgba(111, 90, 255, 0.25);
+    text-wrap: nowrap;
+}
+
+#MH_Subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 0.6rem;
+    font-weight: 500;
+    background: linear-gradient(90deg, #4f9eff, #b46bff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.9;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 #HeaderAvatar {
-  height: 300px;
-  width: auto;
-  aspect-ratio: 1/1;
+    width: 250px;
+    aspect-ratio: 1/1;
 
-  border: 2px solid var(--AccentColor1);
-  border-radius: 100%;
-  overflow: hidden;
+    border-radius: 40%;
 }
 
-#HeaderTitle {
-  padding-top: 20px;
-  text-transform: uppercase;
-  letter-spacing: 5px;
+#MH_Navigation {
+    grid-column: 1/3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-#HeaderNavigation {
-  display: flex;
-  justify-content: center;
+.MH_NavItem {
+    text-decoration: none;
+    color: inherit;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 5px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
 }
 
-.HeaderNavItem {
-  margin: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-
-  text-decoration: none;
-  color: inherit;
-  font-weight: bold;
-
-  border: 2px solid transparent;
+.MH_NavItem:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.HeaderNavItem:hover {
-  border-bottom-color: var(--AccentColor1);
+.MH_NavItem_Icon {
+    margin-right: 5px;
 }
 
-/*======================================== End Header ========================================*/
-
-/*======================================== Begin Footer ========================================*/
-footer {
-  height: 100px;
-
-  border-top: 2px solid var(--AccentColor1);
-  background-color: var(--BackgroundColorDark);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-/*======================================== End Footer ========================================*/
-
-section {
-  padding-top: 200px;
+#MainFooter {
+    text-align: center;
+    padding: 8px;
 }
 
-main section:last-child {
-  padding-bottom: 200px;
+/* ===== Sections ===== */
+
+.Section {
+    width: 100%;
+
+    padding: 22px;
+    margin: 18px 0;
+
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    scroll-margin-top: 100px;
 }
 
-.SectionContent {
-  width: 100%;
-
-  background-color: var(--BackgroundColor);
-
-  border-top: 2px solid var(--AccentColorDark1);
-  border-bottom: 2px solid var(--AccentColorDark1);
-
-  padding-left: 20%;
-  padding-right: 20%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.Section_Title {
+    text-align: center;
+    border-bottom: 3px solid white;
+    margin-bottom: 20px;
 }
 
-.SectionTitle {
-  font-size: 25px;
-  text-align: center;
-
-  padding-top: 10px;
-  padding-bottom: 10px;
+.SectionSubBox {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.25s ease;
 }
 
-/*======================================== Begin Projects ========================================*/
-
-#ProjectList {
-  width: 100%;
-
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-
-  padding-bottom: 30px;
+.SectionSubBox:hover {
+    box-shadow: 0 18px 50px rgba(59, 130, 246, 0.2), 0 10px 30px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.25);
+    border-color: rgba(168, 85, 247, 0.45);
+    cursor: pointer;
 }
 
-.ProjectCardWrapper {
-  padding: 10px;
+.SectionSubBox::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.55), rgba(139, 92, 246, 0.55));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+/* ===== Flipping Animation ===== */
+
+.FlipStart {
+    filter: blur(20px);
+    transition: filter ease-in-out 0.5s;
+}
+
+.FlipStop {
+    filter: blur(0px);
+    transition: filter ease-in-out 0.5s;
+    animation: Shake 0.1s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes Shake {
+    0% {
+        transform: translateX(0);
+    }
+    10% {
+        transform: translateX(-10%);
+    }
+    20% {
+        transform: translateX(10%);
+    }
+    30% {
+        transform: translateX(-10%);
+    }
+    40% {
+        transform: translateX(10%);
+    }
+    50% {
+        transform: translateX(-6%);
+    }
+    60% {
+        transform: translateX(6%);
+    }
+    70% {
+        transform: translateX(-4%);
+    }
+    80% {
+        transform: translateX(4%);
+    }
+    90% {
+        transform: translateX(-2%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ===== Timeline ===== */
+
+#Timeline {
+    list-style-type: none;
+}
+
+.TimelineItem {
+    display: flex;
+}
+
+.TimelineItem_Arm {
+    width: 100%;
+    height: 5px;
+}
+
+.TimelineItem_Node {
+    position: relative;
+
+    width: 5px;
+
+    background-color: #c7b6ff;
+}
+
+.TimelineItem_Node::after {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 50px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #c7b6ff 40%, #7a56ff 70%);
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.TimelineItem_Box_Left::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    right: -80px;
+    width: 80px;
+    height: 3px;
+    background-color: #c7b6ff;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.TimelineItem_Box_Right::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: -80px;
+    width: 80px;
+    height: 3px;
+    background-color: #c7b6ff;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.TimelineItem_Content {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.TimelineItem_Box {
+    width: 350px;
+    margin: 10px;
+    padding: 18px 18px 16px 18px;
+}
+
+.TimelineItem_Head {
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+}
+
+.TimelineItem_Icon {
+    grid-row: 1 / span 2;
+    align-self: center;
+    margin-right: 15px;
+}
+
+.TimelineItem_Title {
+    font-size: 20px;
+}
+
+.TimelineItem_Time {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* ===== Skill Card ===== */
+
+#Skills {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.SkillCard {
+    width: 300px;
+
+    margin: 5px;
+    padding: 10px;
+}
+
+.SkillCard_Title {
+    text-align: center;
+    border-bottom: 2px solid white;
+    margin-bottom: 5px;
+}
+
+/* ===== Project Card ===== */
+
+.ProjectCardList {
+    list-style-type: none;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ProjectCard {
-  width: 250px;
-  height: 400px;
-
-  background-color: var(--BackgroundColorLight);
-  border-top-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-
-  box-shadow: 15px 15px 15px black;
-
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 26px;
+    margin: 10px;
 }
 
-.ProjectCardTitle {
-  margin-top: 20px;
-
-  padding: 5px;
-
-  background-color: var(--BackgroundColorDark);
-
-  border-top: 1px solid var(--AccentColor1);
-  border-bottom: 1px solid var(--AccentColor1);
-
-  text-align: center;
+.ProjectCard_Title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #e5e8ff;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
 }
 
-.ProjectCardContent {
-  height: 100%;
+.ProjectCard_Description {
+    height: 100%;
 
-  padding: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 16px;
 }
 
-.ProjectSourceLinkWrapper {
-  display: flex;
-  justify-content: center;
-
-  padding-bottom: 10px;
+.ProjectCard_Tags {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
-.ProjectSourceLink {
-  text-align: center;
-  color: inherit;
-  text-decoration: none;
-
-  padding: 10px;
-
-  border: 2px solid white;
+.ProjectCard_Tag {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    padding: 6px 12px;
+    border-radius: 999px;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.ProjectSourceLink:hover {
-  color: var(--AccentColorDark1);
+.ProjectCard_Tag:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-/*======================================== End Projects ========================================*/
+/* ===== Techstack ===== */
+
+#TechStacks {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.TechStackCategory {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.TechStackCategory_Title {
+    padding-top: 5px;
+}
+
+.TechStackCategory_Items {
+    list-style-type: none;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.TechStackCategory_Item {
+    width: 160px;
+
+    display: flex;
+}
+
+.TechStackCategory_Link {
+    text-decoration: none;
+    color: inherit;
+
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+}
+
+.TechStackCategory_Link:hover {
+    transform: scale(105%);
+}
+
+.TechStackCategory_Icon {
+    width: 30px;
+    height: 30px;
+
+    margin-right: 10px;
+}

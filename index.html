@@ -1,162 +1,106 @@
 <!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Leon Granz</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <header>
-      <div id="HeaderAvatarWrapper">
-        <img
-          src="https://avatars.githubusercontent.com/u/44649120?v=4"
-          alt="Avatar"
-          id="HeaderAvatar"
-        />
-      </div>
-      <div id="HeaderContent">
-        <h1 id="HeaderTitle">Leon Granz</h1>
-        <nav id="HeaderNavigation">
-          <a href="#AboutMe" class="HeaderNavItem">Über Mich</a>
-          <a href="#Skills" class="HeaderNavItem">Fähigkeiten</a>
-          <a href="#Projects" class="HeaderNavItem">Meine Projekte</a>
-        </nav>
-      </div>
-    </header>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio - DerGaijin</title>
+        <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/fontawesome.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
-    <main>
-      <section id="AboutMe">
-        <div class="SectionContent">
-          <h2 class="SectionTitle">Über Mich</h2>
-          <p>
-            Hallo, mein Name ist Leon Granz und ich bin Anwendungsentwickler.
-          </p>
+        <link rel="stylesheet" href="Style.css" />
+        <script src="Content.js"></script>
+        <script src="Script.js"></script>
+    </head>
+    <body>
+        <div id="Background">
+            <div class="BackgroundGradient" aria-hidden="true"></div>
+            <div class="BackgroundBlobs" aria-hidden="true">
+                <span class="BackgroundBlob" style="--CoordX: 15; --CoordY: 20; --Size: 38; --Hue: 260; --Duration: 22; --Delay: 0.2"></span>
+                <span class="BackgroundBlob" style="--CoordX: 80; --CoordY: 25; --Size: 30; --Hue: 225; --Duration: 28; --Delay: 1.4"></span>
+                <span class="BackgroundBlob" style="--CoordX: 25; --CoordY: 75; --Size: 42; --Hue: 275; --Duration: 26; --Delay: 0.7"></span>
+                <span class="BackgroundBlob" style="--CoordX: 75; --CoordY: 70; --Size: 36; --Hue: 235; --Duration: 24; --Delay: 1.1"></span>
+                <span class="BackgroundBlob" style="--CoordX: 50; --CoordY: 50; --Size: 55; --Hue: 255; --Duration: 30; --Delay: 0"></span>
+            </div>
+            <canvas id="BackgroundStars" aria-hidden="true"></canvas>
         </div>
-      </section>
-      <section id="Skills">
-        <div class="SectionContent">
-          <h2 class="SectionTitle">Fähigkeiten</h2>
-          <p>Hallo, ich habe viele Fähigkeiten.</p>
-        </div>
-      </section>
-      <section id="Projects">
-        <div class="SectionContent">
-          <h2 class="SectionTitle">Meine Projekte</h2>
-          <div id="ProjectList">
-            <div class="ProjectCardWrapper">
-              <div class="ProjectCard">
-                <h3 class="ProjectCardTitle">Game Engine</h3>
-                <p class="ProjectCardContent">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eligendi velit magnam nulla dolores. Quibusdam, omnis et.
-                  Veniam repellendus blanditiis eveniet porro numquam, deleniti
-                  quis itaque inventore ipsum cumque. Obcaecati fugit
-                  necessitatibus eligendi quos molestias, ipsam consectetur vero
-                  harum placeat aperiam maxime modi provident ea ratione.
-                  Distinctio optio quia pariatur nihil?
-                </p>
-                <div class="ProjectSourceLinkWrapper">
-                  <a href="https://github.com/DerGaijin/Cardinal-Engine" class="ProjectSourceLink">View on Github</a>
-                </div>
-              </div>
-            </div>
 
-            <div class="ProjectCardWrapper">
-              <div class="ProjectCard">
-                <h3 class="ProjectCardTitle">Project Manager</h3>
-                <p class="ProjectCardContent">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eligendi velit magnam nulla dolores. Quibusdam, omnis et.
-                  Veniam repellendus blanditiis eveniet porro numquam, deleniti
-                  quis itaque inventore ipsum cumque. Obcaecati fugit
-                  necessitatibus eligendi quos molestias, ipsam consectetur vero
-                  harum placeat aperiam maxime modi provident ea ratione.
-                  Distinctio optio quia pariatur nihil?
-                </p>
-                <div class="ProjectSourceLinkWrapper">
-                  <a href="https://github.com/DerGaijin/ProjectManager" class="ProjectSourceLink">View on Github</a>
+        <main id="Main">
+            <header id="MainHeader">
+                <div id="MH_Content" class="Section Flippable">
+                    <div class="MH_Left">
+                        <p id="MH_PreTitle">Hallo, Ich bin</p>
+                        <h1 id="MH_Title">DerGaijin</h1>
+                        <h2 id="MH_SubTitle">Ein Software Entwickler & System Administrator</h2>
+                    </div>
+                    <div class="MH_Right">
+                        <img src="https://avatars.githubusercontent.com/u/44649120" alt="Avatar" id="HeaderAvatar" />
+                    </div>
+                    <nav id="MH_Navigation">
+                        <a class="MH_NavItem" href="#Section_Timeline">
+                            <i class="MH_NavItem_Icon fa-solid fa-timeline"></i>
+                            <p></p>
+                        </a>
+                        <a class="MH_NavItem" href="#Section_Skills">
+                            <i class="MH_NavItem_Icon fa-solid fa-book"></i>
+                            <p></p>
+                        </a>
+                        <a class="MH_NavItem" href="#Section_WorkProjects">
+                            <i class="MH_NavItem_Icon fa-solid fa-briefcase"></i>
+                            <p></p>
+                        </a>
+                        <a class="MH_NavItem" href="#Section_HobbyProjects">
+                            <i class="MH_NavItem_Icon fa-solid fa-dice"></i>
+                            <p></p>
+                        </a>
+                        <a class="MH_NavItem" href="#Section_TechStack">
+                            <i class="MH_NavItem_Icon fa-solid fa-microchip"></i>
+                            <p></p>
+                        </a>
+                        <a id="MH_ChangeLang" class="MH_NavItem" onclick="SelectLanguage('ENG')">
+                            <i class="MH_NavItem_Icon fa-solid fa-globe"></i>
+                            <p></p>
+                        </a>
+                    </nav>
                 </div>
-              </div>
-            </div>
+            </header>
 
-            <div class="ProjectCardWrapper">
-              <div class="ProjectCard">
-                <h3 class="ProjectCardTitle">C++ Preprocessor Tokenizer</h3>
-                <p class="ProjectCardContent">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eligendi velit magnam nulla dolores. Quibusdam, omnis et.
-                  Veniam repellendus blanditiis eveniet porro numquam, deleniti
-                  quis itaque inventore ipsum cumque. Obcaecati fugit
-                  necessitatibus eligendi quos molestias, ipsam consectetur vero
-                  harum placeat aperiam maxime modi provident ea ratione.
-                  Distinctio optio quia pariatur nihil?
-                </p>
-                <div class="ProjectSourceLinkWrapper">
-                  <a href="https://github.com/DerGaijin/CppParser" class="ProjectSourceLink">View on Github</a>
-                </div>
-              </div>
-            </div>
+            <main id="MainContent">
+                <!-- Timeline -->
+                <section id="Section_Timeline" class="Section Flippable">
+                    <h2 class="Section_Title">Timeline</h2>
+                    <ul id="Timeline"></ul>
+                </section>
+                
+                <!-- Skills -->
+                <section id="Section_Skills" class="Section Flippable">
+                    <h2 class="Section_Title">Fähigkeiten</h2>
+                    <ul id="Skills"></ul>
+                </section>
+                
+                <!-- Work Projects -->
+                <section id="Section_WorkProjects" class="Section Flippable">
+                    <h2 class="Section_Title">Arbeitprojekte</h2>
+                    <ul id="WorkProjectCardList" class="ProjectCardList"></ul>
+                </section>
+                
+                <!-- Hobby Projects -->
+                <section id="Section_HobbyProjects" class="Section Flippable">
+                    <h2 class="Section_Title">Hobby Projekte</h2>
+                    <ul id="HobbyProjectCardList" class="ProjectCardList"></ul>
+                </section>
+                
+                <!-- Tech Stack -->
+                <section id="Section_TechStack" class="Section Flippable">
+                    <h2 class="Section_Title">Techstack</h2>
+                    <ul id="TechStacks"></ul>
+                </section>
+            </main>
+            <footer id="MainFooter" class="Section">Copyright © 2025 DerGaijin. All rights reserved.</footer>
+        </main>
 
-            <div class="ProjectCardWrapper">
-              <div class="ProjectCard">
-                <h3 class="ProjectCardTitle">Async Console Input/Output</h3>
-                <p class="ProjectCardContent">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eligendi velit magnam nulla dolores. Quibusdam, omnis et.
-                  Veniam repellendus blanditiis eveniet porro numquam, deleniti
-                  quis itaque inventore ipsum cumque. Obcaecati fugit
-                  necessitatibus eligendi quos molestias, ipsam consectetur vero
-                  harum placeat aperiam maxime modi provident ea ratione.
-                  Distinctio optio quia pariatur nihil?
-                </p>
-                <div class="ProjectSourceLinkWrapper">
-                  <a href="https://github.com/DerGaijin/CmdIO" class="ProjectSourceLink">View on Github</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="ProjectCardWrapper">
-              <div class="ProjectCard">
-                <h3 class="ProjectCardTitle">Reflection System</h3>
-                <p class="ProjectCardContent">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eligendi velit magnam nulla dolores. Quibusdam, omnis et.
-                  Veniam repellendus blanditiis eveniet porro numquam, deleniti
-                  quis itaque inventore ipsum cumque. Obcaecati fugit
-                  necessitatibus eligendi quos molestias, ipsam consectetur vero
-                  harum placeat aperiam maxime modi provident ea ratione.
-                  Distinctio optio quia pariatur nihil?
-                </p>
-                <div class="ProjectSourceLinkWrapper">
-                  <a href="https://github.com/DerGaijin/Reflection" class="ProjectSourceLink">View on Github</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="ProjectCardWrapper">
-              <div class="ProjectCard">
-                <h3 class="ProjectCardTitle">Tik Tak Toe</h3>
-                <p class="ProjectCardContent">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eligendi velit magnam nulla dolores. Quibusdam, omnis et.
-                  Veniam repellendus blanditiis eveniet porro numquam, deleniti
-                  quis itaque inventore ipsum cumque. Obcaecati fugit
-                  necessitatibus eligendi quos molestias, ipsam consectetur vero
-                  harum placeat aperiam maxime modi provident ea ratione.
-                  Distinctio optio quia pariatur nihil?
-                </p>
-                <div class="ProjectSourceLinkWrapper">
-                  <a href="https://github.com/DerGaijin/TikTakToe" class="ProjectSourceLink">View on Github</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>Copyright © 2023 Leon Granz. All rights reserved.</footer>
-  </body>
+        <script>
+            InitializeWebsiteContent();
+        </script>
+    </body>
 </html>
