@@ -1,13 +1,20 @@
-/* ===== Parameters ===== */
-
+/* ===== Variables ===== */
 :root {
-    --BackgroundColor1: #0a0b1a;
-    --BackgroundColor2: #14172a;
-    --PrimaryColor1: #b46bff;
-    --PrimaryColor2: #4f9eff;
-    --GlassColor: rgba(255, 255, 255, 0.07);
-    --HueColor1: 265;
-    --HueColor2: 220;
+    --ColorBackground_1: #0a0b1a;
+    --ColorBackground_2: #14172a;
+    --ColorHue_1: 265;
+    --ColorHue_2: 220;
+    --Saturation: 70%;
+    --Light_1: 55%;
+    --Light_2: 45%;
+
+    --muted: #b6c3ff;
+    --blue: #33c3ff;
+    --purple: #8b5cf6;
+    --glass: rgba(255, 255, 255, 0.07);
+    --stroke: ;
+    --blur: 5px;
+    --r: 20px;
 }
 
 /* ===== Basics ===== */
@@ -18,8 +25,15 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     background-color: black;
+    display: grid;
+    justify-content: center;
     color: white;
 
     font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -29,21 +43,30 @@ body {
     scroll-behavior: smooth;
 }
 
+#Main {
+    position: relative;
+
+    width: 1100px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
 /* ===== Background ===== */
 
 #Background {
     position: fixed;
-    z-index: -1;
     inset: 0;
-    background: radial-gradient(120vmax 120vmax at 10% 10%, var(--BackgroundColor2), transparent 60%), radial-gradient(120vmax 120vmax at 90% 90%, #0b0e22, transparent 60%), linear-gradient(180deg, var(--BackgroundColor1), #0b0d1f);
+    background: radial-gradient(120vmax 120vmax at 10% 10%, var(--ColorBackground_2), transparent 60%), radial-gradient(120vmax 120vmax at 90% 90%, #0b0e22, transparent 60%), linear-gradient(180deg, var(--ColorBackground_1), #0b0d1f);
     isolation: isolate;
 }
 
 .BackgroundGradient {
     position: absolute;
     inset: -50vmax;
-    background: radial-gradient(closest-side at 30% 30%, hsla(var(--HueColor1), 70%, 55%, 0.35), transparent 60%), radial-gradient(closest-side at 70% 70%, hsla(var(--HueColor2), 70%, 55%, 0.35), transparent 60%),
-        radial-gradient(closest-side at 80% 20%, hsla(calc(var(--HueColor1) - 20), 70%, 55%, 0.25), transparent 60%), radial-gradient(closest-side at 20% 80%, hsla(calc(var(--HueColor2) + 20), 70%, 50%, 0.2), transparent 60%);
+    background: radial-gradient(closest-side at 30% 30%, hsla(var(--ColorHue_1), var(--Saturation), var(--Light_1), 0.35), transparent 60%), radial-gradient(closest-side at 70% 70%, hsla(var(--ColorHue_2), var(--Saturation), var(--Light_1), 0.35), transparent 60%),
+        radial-gradient(closest-side at 80% 20%, hsla(calc(var(--ColorHue_1) - 20), var(--Saturation), 55%, 0.25), transparent 60%), radial-gradient(closest-side at 20% 80%, hsla(calc(var(--ColorHue_2) + 20), var(--Saturation), 50%, 0.2), transparent 60%);
     filter: blur(40px) saturate(120%);
     animation: BackcgroundSlide 32s ease-in-out infinite alternate;
     pointer-events: none;
@@ -108,18 +131,27 @@ body {
     }
 }
 
-/* ===== Main Header, Navigation and Footer ===== */
+/* ===== Header & Footer ===== */
 
 #MainHeader {
-    border-bottom: unset;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    box-shadow: unset;
+    height: 380px;
+}
 
+#MH_Content {
+    width: 1100px;
+    z-index: 999;
     display: grid;
     grid-template-columns: 1fr 0fr;
+}
+
+#MH_Content.MH_ContentFixed {
+    position: fixed;
+    margin: 0px;
+}
+
+.MH_ContentFixed .MH_Left,
+.MH_ContentFixed .MH_Right {
+    display: none;
 }
 
 .MH_Left {
@@ -129,23 +161,19 @@ body {
 }
 
 #MH_PreTitle {
-    padding-top: 10px;
-    font-size: 18px;
+    font-size: 1rem;
     opacity: 0.7;
-    letter-spacing: 2px;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.3rem 0;
 }
 
 #MH_Title {
     width: fit-content;
-    max-width: 400px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-
     font-size: 60px;
     font-weight: 800;
     margin: 0;
     line-height: 1.1;
-    background: linear-gradient(90deg, var(--PrimaryColor2), var(--PrimaryColor1));
+    background: linear-gradient(90deg, #4f9eff, #b46bff);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -155,12 +183,16 @@ body {
     text-wrap: nowrap;
 }
 
-#MH_SubTitle {
+#MH_Subtitle {
+    font-size: 1.25rem;
     color: rgba(255, 255, 255, 0.75);
-}
-
-#MH_SubTitle b {
-    white-space: nowrap;
+    margin-top: 0.6rem;
+    font-weight: 500;
+    background: linear-gradient(90deg, #4f9eff, #b46bff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.9;
 }
 
 @keyframes gradientFlow {
@@ -182,24 +214,14 @@ body {
     border-radius: 40%;
 }
 
-#MainNavigation {
-    top: 0;
-    position: sticky;
-    z-index: 1;
-
-    border-top: unset;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    margin-top: 0;
-    box-shadow: unset;
-
+#MH_Navigation {
     grid-column: 1/3;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
-.MN_Item {
+.MH_NavItem {
     text-decoration: none;
     color: inherit;
 
@@ -215,7 +237,7 @@ body {
     border-radius: 10px;
 }
 
-.MN_Item:hover {
+.MH_NavItem:hover {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -224,7 +246,7 @@ body {
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.MN_Item_Icon {
+.MH_NavItem_Icon {
     margin-right: 5px;
 }
 
@@ -236,13 +258,12 @@ body {
 /* ===== Sections ===== */
 
 .Section {
-    width: 1100px;
-    justify-self: center;
+    width: 100%;
 
     padding: 22px;
     margin: 18px 0;
 
-    background: var(--GlassColor);
+    background: rgba(255, 255, 255, 0.07);
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 20px;
     backdrop-filter: blur(5px);
@@ -341,54 +362,32 @@ body {
 
 /* ===== Timeline ===== */
 
-.TimelineRow {
-    display: grid;
-    grid-template-columns: 1fr 0fr 1fr;
+#Timeline {
+    list-style-type: none;
 }
 
-.TimelineRow_Reversed > .Timeline_Content {
-    grid-row: 1;
-    grid-column: 3;
+.TimelineItem {
+    display: flex;
 }
 
-.TimelineRow_Reversed > .Timeline_Spacer {
-    grid-row: 1;
-    grid-column: 1;
+.TimelineItem_Arm {
+    width: 100%;
+    height: 5px;
 }
 
-.TimelineRow_Reversed > .Timeline_Content > .Timeline_Arm {
-    grid-row: 1;
-    grid-column: 1;
-}
-
-.TimelineRow_Reversed > .Timeline_Content > .Timeline_Spacer {
-    grid-row: 1;
-    grid-column: 1;
-}
-
-.Timeline_Content {
-    display: grid;
-    grid-template-columns: 1fr 0fr 1fr;
-}
-
-.Timeline_Line {
-    height: 100%;
-    width: 4px;
-    background-color: #c7b6ff;
-}
-
-.Timeline_Arm {
+.TimelineItem_Node {
     position: relative;
-    margin-top: 50px;
-    height: 3px;
+
+    width: 5px;
+
     background-color: #c7b6ff;
 }
 
-.Timeline_Arm::after {
+.TimelineItem_Node::after {
     content: "";
     position: absolute;
-    right: -13px;
-    top: -9px;
+    left: -9px;
+    top: 50px;
     width: 18px;
     height: 18px;
     border-radius: 50%;
@@ -397,13 +396,43 @@ body {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
-.TimelineRow_Reversed .Timeline_Arm::after {
-    left: -13px;
-    top: -9px;
+.TimelineItem_Box_Left::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    right: -80px;
+    width: 80px;
+    height: 3px;
+    background-color: #c7b6ff;
+    transform: translateY(-50%);
+    z-index: 1;
 }
 
-.Timeline_Content .Timeline_Item {
-    width: 400px;
+.TimelineItem_Box_Right::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: -80px;
+    width: 80px;
+    height: 3px;
+    background-color: #c7b6ff;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.TimelineItem_Content {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.TimelineItem_Box {
+    width: 350px;
+    margin: 10px;
+    padding: 18px 18px 16px 18px;
 }
 
 .TimelineItem_Head {
@@ -426,61 +455,47 @@ body {
     color: #ccc;
 }
 
-/* ===== Content Box ===== */
+/* ===== Skill Card ===== */
 
-#List_Skills,
-#List_WorkProjects,
-#List_HobbyProjects {
+#Skills {
+    list-style-type: none;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-#List_Skills .SectionSubBox {
-    width: 330px;
+.SkillCard {
+    width: 300px;
+
+    margin: 5px;
+    padding: 10px;
 }
 
-.SectionSubBox {
-    width: 100%;
+.SkillCard_Title {
+    text-align: center;
+    border-bottom: 2px solid white;
+    margin-bottom: 5px;
+}
 
+/* ===== Project Card ===== */
+
+.ProjectCardList {
+    list-style-type: none;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ProjectCard {
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 22px 26px;
     margin: 10px;
-
-    margin: 5px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.85);
-    transition: all 0.25s ease;
 }
 
-.SectionSubBox:hover {
-    box-shadow: 0 18px 50px rgba(59, 130, 246, 0.2), 0 10px 30px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.25);
-    border-color: rgba(168, 85, 247, 0.45);
-    cursor: pointer;
-}
-
-.SectionSubBox::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.55), rgba(139, 92, 246, 0.55));
-    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-    opacity: 0.35;
-}
-
-.SectionSubBox_Title {
+.ProjectCard_Title {
     font-size: 1.4rem;
     font-weight: 600;
     color: #e5e8ff;
@@ -488,21 +503,23 @@ body {
     letter-spacing: 0.3px;
 }
 
-.SectionSubBox_Description {
+.ProjectCard_Description {
+    height: 100%;
+
     font-size: 0.95rem;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.75);
     margin-bottom: 16px;
 }
 
-.SectionSubBox_Tags {
+.ProjectCard_Tags {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.SectionSubBox_Tag {
+.ProjectCard_Tag {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.8);
@@ -510,6 +527,11 @@ body {
     padding: 6px 12px;
     border-radius: 999px;
     transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ProjectCard_Tag:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ===== Techstack ===== */
@@ -565,72 +587,4 @@ body {
     height: 30px;
 
     margin-right: 10px;
-}
-
-/* ===== Media Queries ===== */
-
-@media (max-width: 1125px) {
-    .Section {
-        width: 700px;
-    }
-
-    .Timeline_Content .Timeline_Item {
-        width: 250px;
-    }
-}
-
-@media (max-width: 750px) {
-    .Section {
-        width: 95%;
-    }
-
-    #MainHeader {
-        grid-template-columns: 1fr;
-    }
-
-    #MH_Title {
-        align-self: center;
-    }
-
-    #MH_PreTitle,
-    #MH_SubTitle {
-        width: 100%;
-        max-width: unset;
-        text-align: center;
-    }
-
-    .MH_Left {
-        grid-row: 2;
-    }
-
-    .MH_Right {
-        display: flex;
-        justify-content: center;
-    }
-
-    #MainNavigation {
-        position: relative;
-    }
-
-    .TimelineRow {
-        grid-template-columns: 0fr 0fr;
-    }
-
-    .Timeline_Content {
-        grid-row: 1;
-        grid-column: 3 !important;
-    }
-
-    .Timeline_Arm {
-        grid-row: 1;
-        grid-column: 1 !important;
-    }
-
-    .Timeline_Spacer {
-        display: none;
-    }
-
-    .Timeline_Arm::after {
-        left: -13px;
-    }
 }

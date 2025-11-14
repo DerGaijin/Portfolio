@@ -13,6 +13,7 @@
         <script src="Script.js"></script>
     </head>
     <body>
+        <!-- Background -->
         <div id="Background">
             <div class="BackgroundGradient" aria-hidden="true"></div>
             <div class="BackgroundBlobs" aria-hidden="true">
@@ -25,82 +26,77 @@
             <canvas id="BackgroundStars" aria-hidden="true"></canvas>
         </div>
 
-        <main id="Main">
-            <header id="MainHeader">
-                <div id="MH_Content" class="Section Flippable">
-                    <div class="MH_Left">
-                        <p id="MH_PreTitle">Hallo, Ich bin</p>
-                        <h1 id="MH_Title">DerGaijin</h1>
-                        <h2 id="MH_SubTitle">Ein Software Entwickler & System Administrator</h2>
-                    </div>
-                    <div class="MH_Right">
-                        <img src="https://avatars.githubusercontent.com/u/44649120" alt="Avatar" id="HeaderAvatar" />
-                    </div>
-                    <nav id="MH_Navigation">
-                        <a class="MH_NavItem" href="#Section_Timeline">
-                            <i class="MH_NavItem_Icon fa-solid fa-timeline"></i>
-                            <p></p>
-                        </a>
-                        <a class="MH_NavItem" href="#Section_Skills">
-                            <i class="MH_NavItem_Icon fa-solid fa-book"></i>
-                            <p></p>
-                        </a>
-                        <a class="MH_NavItem" href="#Section_WorkProjects">
-                            <i class="MH_NavItem_Icon fa-solid fa-briefcase"></i>
-                            <p></p>
-                        </a>
-                        <a class="MH_NavItem" href="#Section_HobbyProjects">
-                            <i class="MH_NavItem_Icon fa-solid fa-dice"></i>
-                            <p></p>
-                        </a>
-                        <a class="MH_NavItem" href="#Section_TechStack">
-                            <i class="MH_NavItem_Icon fa-solid fa-microchip"></i>
-                            <p></p>
-                        </a>
-                        <a id="MH_ChangeLang" class="MH_NavItem" onclick="SelectLanguage('ENG')">
-                            <i class="MH_NavItem_Icon fa-solid fa-globe"></i>
-                            <p></p>
-                        </a>
-                    </nav>
-                </div>
-            </header>
+        <!-- Header -->
+        <header id="MainHeader" class="Section Flippable">
+            <div class="MH_Left">
+                <p id="MH_PreTitle">Hallo, Ich bin</p>
+                <h1 id="MH_Title">DerGaijin</h1>
+                <h2 id="MH_SubTitle">Ein <b>Software Entwickler</b> & <b>System Administrator</b></h2>
+            </div>
+            <div class="MH_Right">
+                <img src="https://avatars.githubusercontent.com/u/44649120" alt="Avatar" id="HeaderAvatar" />
+            </div>
+        </header>
 
-            <main id="MainContent">
-                <!-- Timeline -->
-                <section id="Section_Timeline" class="Section Flippable">
-                    <h2 class="Section_Title">Timeline</h2>
-                    <ul id="Timeline"></ul>
-                </section>
-                
-                <!-- Skills -->
-                <section id="Section_Skills" class="Section Flippable">
-                    <h2 class="Section_Title">Fähigkeiten</h2>
-                    <ul id="Skills"></ul>
-                </section>
-                
-                <!-- Work Projects -->
-                <section id="Section_WorkProjects" class="Section Flippable">
-                    <h2 class="Section_Title">Arbeitprojekte</h2>
-                    <ul id="WorkProjectCardList" class="ProjectCardList"></ul>
-                </section>
-                
-                <!-- Hobby Projects -->
-                <section id="Section_HobbyProjects" class="Section Flippable">
-                    <h2 class="Section_Title">Hobby Projekte</h2>
-                    <ul id="HobbyProjectCardList" class="ProjectCardList"></ul>
-                </section>
-                
-                <!-- Tech Stack -->
-                <section id="Section_TechStack" class="Section Flippable">
-                    <h2 class="Section_Title">Techstack</h2>
-                    <ul id="TechStacks"></ul>
-                </section>
-            </main>
-            <footer id="MainFooter" class="Section">Copyright © 2025 DerGaijin. All rights reserved.</footer>
-        </main>
+        <!-- Navigation -->
+        <nav id="MainNavigation" class="Section Flippable">
+            <a class="MN_Item" href="#Section_Timeline">
+                <i class="MH_NavItem_Icon fa-solid fa-timeline"></i>
+                <p>Lebenslauf</p>
+            </a>
+            <a class="MN_Item" href="#Section_Skills">
+                <i class="MH_NavItem_Icon fa-solid fa-book"></i>
+                <p>Fähigkeiten</p>
+            </a>
+            <a class="MN_Item" href="#Section_WorkProjects">
+                <i class="MH_NavItem_Icon fa-solid fa-briefcase"></i>
+                <p>Arbeits Projekte</p>
+            </a>
+            <a class="MN_Item" href="#Section_HobbyProjects">
+                <i class="MH_NavItem_Icon fa-solid fa-dice"></i>
+                <p>Hobby Projekte</p>
+            </a>
+            <a class="MN_Item" href="#Section_TechStack">
+                <i class="MH_NavItem_Icon fa-solid fa-microchip"></i>
+                <p>Techstack</p>
+            </a>
+            <a id="MH_ChangeLang" class="MN_Item" onclick="SelectLanguage('ENG')">
+                <i class="MH_NavItem_Icon fa-solid fa-globe"></i>
+                <p>English Version</p>
+            </a>
+        </nav>
 
-        <script>
-            InitializeWebsiteContent();
-        </script>
+        <!-- Timeline -->
+        <section id="Section_Timeline" class="Section Flippable">
+            <h2 class="Section_Title">Timeline</h2>
+            <ul id="List_Timeline"></ul>
+        </section>
+
+        <!-- Skills -->
+        <section id="Section_Skills" class="Section Flippable">
+            <h2 class="Section_Title">Fähigkeiten</h2>
+            <ul id="List_Skills"></ul>
+        </section>
+
+        <!-- Work Projects -->
+        <section id="Section_WorkProjects" class="Section Flippable">
+            <h2 class="Section_Title">Arbeitprojekte</h2>
+            <ul id="List_WorkProjects" class="ProjectCardList"></ul>
+        </section>
+
+        <!-- Hobby Projects -->
+        <section id="Section_HobbyProjects" class="Section Flippable">
+            <h2 class="Section_Title">Hobby Projekte</h2>
+            <ul id="List_HobbyProjects" class="ProjectCardList"></ul>
+        </section>
+
+        <!-- Tech Stack -->
+        <section id="Section_TechStack" class="Section Flippable">
+            <h2 class="Section_Title">Techstack</h2>
+            <ul id="List_Techstack"></ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="MainFooter" class="Section">Copyright © 2025 DerGaijin. All rights reserved.</footer>
     </body>
 </html>

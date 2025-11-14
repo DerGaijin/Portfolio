@@ -1,10 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     SetupBackground();
+    InitializeContent();
 });
-
-window.onscroll = function () {
-    AttachHeaderContent();
-};
 
 function SetupBackground() {
     // Tiny starfield with subtle parallax & twinkle — tuned for perf
@@ -87,38 +84,6 @@ function SetupBackground() {
     draw();
 }
 
-function AttachHeaderContent() {
-    var MH_Content = document.getElementById("MH_Content");
-
-    if (window.scrollY >= 275) {
-        MH_Content.classList.add("MH_ContentFixed");
-    } else {
-        MH_Content.classList.remove("MH_ContentFixed");
-    }
-}
-
-function SelectLanguage(Lang) {
-    var Flippable = document.getElementsByClassName("Flippable");
-    for (var Item of Flippable) {
-        Item.classList.remove("FlipStop");
-        Item.classList.add("FlipStart");
-    }
-
-    setTimeout(() => {
-        if (Lang == "ENG") {
-            UpdateWebsiteContent(Content.ENG);
-        } else {
-            UpdateWebsiteContent(Content.GER);
-        }
-
-        var Flippable = document.getElementsByClassName("Flippable");
-        for (var Item of Flippable) {
-            Item.classList.remove("FlipStart");
-            Item.classList.add("FlipStop");
-        }
-    }, 500);
-}
-
 function GetQueryParams(qs) {
     qs = qs.split("+").join(" ");
     var params = {},
@@ -130,51 +95,63 @@ function GetQueryParams(qs) {
     return params;
 }
 
-function InitializeWebsiteContent() {
-    const Params = GetQueryParams(document.location.search);
+function UpdateContent(Data) {
+    // Get Queries
+    const Query = GetQueryParams(document.location.search);
 
-    const Lang = "Lang" in Params ? Params["Lang"] : "GER";
-    if (Lang == "ENG") {
-        UpdateWebsiteContent(Content.ENG);
-    } else {
-        UpdateWebsiteContent(Content.GER);
-    }
-}
-
-function UpdateWebsiteContent(Data) {
-    const Params = GetQueryParams(document.location.search);
-
-    // Header
+    // Main Header
     document.getElementById("MH_PreTitle").innerText = Data.Header.PreTitle;
-    if ("Name" in Params) {
-        document.getElementById("MH_Title").innerText = Params["Name"];
-    } else {
-        document.getElementById("MH_Title").innerText = Data.Header.Title;
+    if (Query?.Name) {
+        document.getElementById("MH_Title").innerText = Query.Name;
     }
-    document.getElementById("MH_SubTitle").innerText = Data.Header.SubTitle;
-    if (Data.Header.Tag == "GER") {
-        document.getElementById("MH_ChangeLang").onclick = SelectLanguage.bind(null, "ENG");
-    } else {
-        document.getElementById("MH_ChangeLang").onclick = SelectLanguage.bind(null, "GER");
-    }
+    document.getElementById("MH_SubTitle").innerHTML = Data.Header.SubTitle;
 
-    // Header Navigation
-    var MH_Navigation = document.getElementById("MH_Navigation");
-    for (let Idx = 0; Idx < MH_Navigation.children.length; Idx++) {
-        MH_Navigation.children[Idx].children[1].innerText = Data.Header.Navigation[Idx];
+    // Main Navigation
+    var MH_Navigation = document.getElementById("MainNavigation");
+    MH_Navigation.innerHTML = "";
+    for (const Item of Data.Navigation) {
+        var MN_Item = document.createElement("a");
+        MN_Item.className = "MN_Item";
+        MH_Navigation.appendChild(MN_Item);
+
+        if (Item?.IsButton) {
+            MN_Item.setAttribute("onclick", Item.Url);
+        } else {
+            MN_Item.href = Item.Url;
+        }
+
+        var MN_Item_Icon = document.createElement(Item?.IconIsImage ? "img" : "i");
+        MN_Item_Icon.className = "MN_Item_Icon";
+        if (Item?.IconIsImage) {
+            MN_Item_Icon.src = Item.Icon;
+        } else {
+            MN_Item_Icon.classList.add("fa-solid");
+            MN_Item_Icon.classList.add(Item.Icon);
+        }
+        MN_Item.appendChild(MN_Item_Icon);
+
+        var MN_Item_Text = document.createElement("p");
+        MN_Item_Text.innerText = Item.Label;
+        MN_Item.appendChild(MN_Item_Text);
     }
 
     // Timeline
-    var Timeline = document.getElementById("Timeline");
-    Timeline.innerHTML = "";
-    for (const [Idx, Item] of Data.Timeline.entries()) {
-        var TimelineItem = document.createElement("li");
-        TimelineItem.className = "TimelineItem";
-        Timeline.appendChild(TimelineItem);
+    var List_Timeline = document.getElementById("List_Timeline");
+    List_Timeline.innerHTML = "";
+    let TimelineReversed = true;
+    for (const Item of Data.Timeline.Items) {
+        TimelineReversed = !TimelineReversed;
+        var TimelineRow = document.createElement("div");
+        TimelineRow.className = "TimelineRow";
+        if (TimelineReversed) {
+            TimelineRow.classList.add("TimelineRow_Reversed");
+        }
+        List_Timeline.appendChild(TimelineRow);
 
-        TimelineItem.innerHTML = `
-            <div class="TimelineItem_Content">
-                <div class="TimelineItem_Box SectionSubBox ${Idx % 2 ? "TimelineItem_Box_Right" : "TimelineItem_Box_Left"}">
+        TimelineRow.innerHTML = `
+            <div class="Timeline_Content ">
+                <div class="Timeline_Spacer"></div>
+                <div class="Timeline_Item SectionSubBox">
                     <div class="TimelineItem_Head">
                         <i class="TimelineItem_Icon fa-solid ${Item.Icon} fa-2xl"></i>
                         <h4 class="TimelineItem_Title">${Item.Label}</h4>
@@ -184,89 +161,78 @@ function UpdateWebsiteContent(Data) {
                         <p>${Item.Text}</p>
                     </div>
                 </div>
+                <div class="Timeline_Arm"></div>
             </div>
+            <div class="Timeline_Line"></div>
+            <div class="Timeline_Spacer"></div>
         `;
-        if (Idx % 2) {
-            TimelineItem.innerHTML =
-                `
-                <span class="TimelineItem_Arm"></span>
-                <span class="TimelineItem_Node"></span>
-                ` + TimelineItem.innerHTML;
-        } else {
-            TimelineItem.innerHTML =
-                TimelineItem.innerHTML +
-                `
-                <span class="TimelineItem_Node"></span>
-                <span class="TimelineItem_Arm"></span>
-                `;
-        }
     }
 
     // Skills
-    var Skills = document.getElementById("Skills");
-    Skills.innerHTML = "";
-    for (const Item of Data.Skills) {
-        var SkillCard = document.createElement("li");
-        SkillCard.className = "SkillCard SectionSubBox";
-        Skills.appendChild(SkillCard);
+    var List_Skills = document.getElementById("List_Skills");
+    List_Skills.innerHTML = "";
+    for (const Item of Data.Skills.Items) {
+        var SectionSubBox = document.createElement("div");
+        SectionSubBox.className = "SectionSubBox";
+        List_Skills.appendChild(SectionSubBox);
 
-        SkillCard.innerHTML = `
-        <h4 class="SkillCard_Title">${Item.Label}</h4>
-        <p class="SkillCard_Text">${Item.Text}</p>
+        SectionSubBox.innerHTML = `
+            <h4 class="SectionSubBox_Title">${Item.Label}</h4>
+            <p class="SectionSubBox_Description">${Item.Text}</p>
         `;
     }
 
     // Work Projects
-    var WorkProjectCardList = document.getElementById("WorkProjectCardList");
-    WorkProjectCardList.innerHTML = "";
-    for (const Item of Data.WorkProjects) {
-        var ProjectCard = document.createElement("li");
-        ProjectCard.className = "ProjectCard SectionSubBox";
-        WorkProjectCardList.appendChild(ProjectCard);
+    var List_WorkProjects = document.getElementById("List_WorkProjects");
+    List_WorkProjects.innerHTML = "";
+    for (const Item of Data.WorkProjects.Items) {
+        var SectionSubBox = document.createElement("div");
+        SectionSubBox.className = "SectionSubBox";
+        List_WorkProjects.appendChild(SectionSubBox);
 
-        ProjectCard.innerHTML = `
-            <h4 class="ProjectCard_Title">${Item.Label}</h4>
-            <p class="ProjectCard_Description">${Item.Text}</p>
-            <ul class="ProjectCard_Tags"></ul>
+        SectionSubBox.innerHTML = `
+            <h4 class="SectionSubBox_Title">${Item.Label}</h4>
+            <p class="SectionSubBox_Description">${Item.Text}</p>
+            <ul class="SectionSubBox_Tags"></ul>
         `;
 
         for (const Tag of Item.Tags) {
-            var ProjectCard_Tag = document.createElement("li");
-            ProjectCard_Tag.className = "ProjectCard_Tag";
-            ProjectCard_Tag.innerText = Tag;
-            ProjectCard.children[2].appendChild(ProjectCard_Tag);
+            var SectionSubBox_Tag = document.createElement("li");
+            SectionSubBox_Tag.className = "SectionSubBox_Tag";
+            SectionSubBox_Tag.innerText = Tag;
+            SectionSubBox.children[2].appendChild(SectionSubBox_Tag);
         }
     }
 
     // Hobby Projects
-    var HobbyProjectCardList = document.getElementById("HobbyProjectCardList");
-    HobbyProjectCardList.innerHTML = "";
-    for (const Item of Data.HobbyProjects) {
-        var ProjectCard = document.createElement("li");
-        ProjectCard.className = "ProjectCard SectionSubBox";
-        HobbyProjectCardList.appendChild(ProjectCard);
+    var List_HobbyProjects = document.getElementById("List_HobbyProjects");
+    List_HobbyProjects.innerHTML = "";
+    for (const Item of Data.HobbyProjects.Items) {
+        var SectionSubBox = document.createElement("div");
+        SectionSubBox.className = "SectionSubBox";
+        List_HobbyProjects.appendChild(SectionSubBox);
 
-        ProjectCard.innerHTML = `
-            <h4 class="ProjectCard_Title">${Item.Label}</h4>
-            <p class="ProjectCard_Description">${Item.Text}</p>
-            <ul class="ProjectCard_Tags"></ul>
+        SectionSubBox.innerHTML = `
+            <h4 class="SectionSubBox_Title">${Item.Label}</h4>
+            <p class="SectionSubBox_Description">${Item.Text}</p>
+            <ul class="SectionSubBox_Tags"></ul>
         `;
 
         for (const Tag of Item.Tags) {
-            var ProjectCard_Tag = document.createElement("li");
-            ProjectCard_Tag.className = "ProjectCard_Tag";
-            ProjectCard_Tag.innerText = Tag;
-            ProjectCard.children[2].appendChild(ProjectCard_Tag);
+            var SectionSubBox_Tag = document.createElement("li");
+            SectionSubBox_Tag.className = "SectionSubBox_Tag";
+            SectionSubBox_Tag.innerText = Tag;
+            SectionSubBox.children[2].appendChild(SectionSubBox_Tag);
         }
     }
 
     // Techstack
-    var TechStacks = document.getElementById("TechStacks");
-    TechStacks.innerHTML = "";
+    var List_Techstack = document.getElementById("List_Techstack");
+    List_Techstack.innerHTML = "";
     for (const Item of Data.Techstack) {
         var TechStackCategory = document.createElement("li");
         TechStackCategory.className = "TechStackCategory";
-        TechStacks.appendChild(TechStackCategory);
+        List_Techstack.appendChild(TechStackCategory);
 
         TechStackCategory.innerHTML = `
             <h4 class="TechStackCategory_Title">${Item.Title}</h4>
@@ -287,4 +253,34 @@ function UpdateWebsiteContent(Data) {
             `;
         }
     }
+}
+
+function InitializeContent() {
+    const Query = GetQueryParams(document.location.search);
+
+    UpdateContent(Query?.Lang?.toLowerCase() == "eng" ? Content.ENG : Content.GER);
+}
+
+function ChangeLanguage(Lang) {
+    var Flippable = document.getElementsByClassName("Flippable");
+    for (var Item of Flippable) {
+        Item.classList.remove("FlipStop");
+        Item.classList.add("FlipStart");
+    }
+
+    setTimeout(() => {
+        if ("URLSearchParams" in window) {
+            const url = new URL(window.location);
+            url.searchParams.set("Lang", Lang);
+            history.pushState(null, "", url);
+        }
+
+        UpdateContent(Lang == "ENG" ? Content.ENG : Content.GER);
+
+        var Flippable = document.getElementsByClassName("Flippable");
+        for (var Item of Flippable) {
+            Item.classList.remove("FlipStart");
+            Item.classList.add("FlipStop");
+        }
+    }, 500);
 }

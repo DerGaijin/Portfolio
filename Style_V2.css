@@ -1,0 +1,337 @@
+/* ===== Parameters ===== */
+
+:root {
+    --BackgroundColor1: #0a0b1a;
+    --BackgroundColor2: #14172a;
+    --PrimaryColor1: #b46bff;
+    --PrimaryColor2: #4f9eff;
+    --GlassColor: rgba(255, 255, 255, 0.07);
+    --HueColor1: 265;
+    --HueColor2: 220;
+}
+
+/* ===== Basics ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+    display: grid;
+    justify-content: center;
+    color: white;
+
+    font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+
+    scroll-behavior: smooth;
+}
+
+#Main {
+    position: relative;
+
+    width: 1100px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== Background ===== */
+
+#Background {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(120vmax 120vmax at 10% 10%, var(--BackgroundColor2), transparent 60%), radial-gradient(120vmax 120vmax at 90% 90%, #0b0e22, transparent 60%), linear-gradient(180deg, var(--BackgroundColor1), #0b0d1f);
+    isolation: isolate;
+}
+
+.BackgroundGradient {
+    position: absolute;
+    inset: -50vmax;
+    background: radial-gradient(closest-side at 30% 30%, hsla(var(--HueColor1), 70%, 55%, 0.35), transparent 60%), radial-gradient(closest-side at 70% 70%, hsla(var(--HueColor2), 70%, 55%, 0.35), transparent 60%),
+        radial-gradient(closest-side at 80% 20%, hsla(calc(var(--HueColor1) - 20), 70%, 55%, 0.25), transparent 60%), radial-gradient(closest-side at 20% 80%, hsla(calc(var(--HueColor2) + 20), 70%, 50%, 0.2), transparent 60%);
+    filter: blur(40px) saturate(120%);
+    animation: BackcgroundSlide 32s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes BackcgroundSlide {
+    0% {
+        transform: translate3d(-6%, -4%, 0) rotate(-2deg) scale(1.05);
+    }
+    50% {
+        transform: translate3d(6%, 4%, 0) rotate(2deg) scale(1.06);
+    }
+    100% {
+        transform: translate3d(-3%, 3%, 0) rotate(-1deg) scale(1.04);
+    }
+}
+
+.BackgroundBlobs {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.BackgroundBlob {
+    position: absolute;
+    left: calc(var(--CoordX) * 1vw);
+    top: calc(var(--CoordY) * 1vh);
+    width: calc(var(--Size) * 1vmin);
+    height: calc(var(--Size) * 1vmin);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, hsla(var(--Hue), 80%, 60%, 0.55), transparent 60%);
+    filter: blur(30px);
+    mix-blend-mode: screen;
+    animation: BackgroundBlobFloat var(--Duration) s ease-in-out calc(var(--Delay) * 1s) infinite alternate;
+}
+
+@keyframes BackgroundBlobFloat {
+    from {
+        transform: translate3d(-4vmin, -3vmin, 0) scale(0.95);
+    }
+    to {
+        transform: translate3d(4vmin, 3vmin, 0) scale(1.05);
+    }
+}
+
+#BackgroundStars {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .BackgroundGradient,
+    .BackgroundBlob {
+        animation: none;
+    }
+}
+
+/* ===== Header & Footer ===== */
+
+#MainHeader {
+    /* height: 380px; */
+}
+
+#MH_Content {
+    width: inherit;
+    z-index: 999;
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+}
+
+#MH_Content.MH_ContentFixed {
+    position: fixed;
+    margin: 0px;
+}
+
+.MH_ContentFixed .MH_Left,
+.MH_ContentFixed .MH_Right {
+    display: none;
+}
+
+.MH_Left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#MH_PreTitle {
+    padding-top: 10px;
+    font-size: 1rem;
+    opacity: 0.7;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.3rem 0;
+}
+
+#MH_Title {
+    width: fit-content;
+    font-size: 60px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    background: linear-gradient(90deg, var(--PrimaryColor2), var(--PrimaryColor1));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientFlow 8s ease infinite;
+    text-shadow: 0 0 30px rgba(111, 90, 255, 0.25);
+    text-wrap: nowrap;
+}
+
+#MH_SubTitle {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#HeaderAvatar {
+    width: 250px;
+    aspect-ratio: 1/1;
+
+    border-radius: 40%;
+}
+
+#MH_Navigation {
+    grid-column: 1/3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.MH_NavItem {
+    text-decoration: none;
+    color: inherit;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 5px;
+
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.MH_NavItem:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.MH_NavItem_Icon {
+    margin-right: 5px;
+}
+
+#MainFooter {
+    text-align: center;
+    padding: 8px;
+}
+
+/* ===== Sections ===== */
+
+.Section {
+    width: 100%;
+
+    padding: 22px;
+    margin: 18px 0;
+
+    background: var(--GlassColor);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+    scroll-margin-top: 100px;
+}
+
+.Section_Title {
+    text-align: center;
+    border-bottom: 3px solid white;
+    margin-bottom: 20px;
+}
+
+.SectionSubBox {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    transition: all 0.25s ease;
+}
+
+.SectionSubBox:hover {
+    box-shadow: 0 18px 50px rgba(59, 130, 246, 0.2), 0 10px 30px rgba(0, 0, 0, 0.35), 0 2px 10px rgba(0, 0, 0, 0.25);
+    border-color: rgba(168, 85, 247, 0.45);
+    cursor: pointer;
+}
+
+.SectionSubBox::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.55), rgba(139, 92, 246, 0.55));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+/* ===== Media Queries ===== */
+
+@media (max-width: 1125px) {
+    #Main {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    #MH_SubTitle {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 650px) {
+    #MH_Content {
+        grid-template-columns: 1fr;
+    }
+
+    #MH_PreTitle,
+    #MH_Title,
+    #MH_SubTitle {
+        width: 100%;
+        max-width: unset;
+        text-align: center;
+    }
+
+    #MH_SubTitle {
+    }
+
+    .MH_Left {
+        grid-row: 2;
+    }
+
+    .MH_Right {
+        display: flex;
+        justify-content: center;
+    }
+}
