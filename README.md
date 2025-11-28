@@ -6,6 +6,3 @@ Es handelt sich um eine einfache statische HTML-Seite, die meine Projekte und F√
 ## Vorschau
 Die Live-Version ist hier verf√ºgbar:  
 https://dergaijin.github.io/Portfolio/
-
-## Lizenz
-Dieses Projekt ist frei zur Ansicht und Inspiration.
