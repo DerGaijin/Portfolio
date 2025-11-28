@@ -22,6 +22,10 @@ body {
     background-color: black;
     color: white;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     font-family: Outfit, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     letter-spacing: 0.2px;
@@ -237,7 +241,6 @@ body {
 
 .Section {
     width: 1100px;
-    justify-self: center;
 
     padding: 22px;
     margin: 18px 0;
@@ -486,6 +489,10 @@ body {
     color: #e5e8ff;
     margin-bottom: 6px;
     letter-spacing: 0.3px;
+}
+
+.SectionSubBox_Title_Center {
+    text-align: center;
 }
 
 .SectionSubBox_Description {

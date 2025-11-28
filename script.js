@@ -136,6 +136,7 @@ function UpdateContent(Data) {
     }
 
     // Timeline
+    document.getElementById("Section_Timeline").children[0].innerText = Data.Timeline.Title;
     var List_Timeline = document.getElementById("List_Timeline");
     List_Timeline.innerHTML = "";
     let TimelineReversed = true;
@@ -169,6 +170,7 @@ function UpdateContent(Data) {
     }
 
     // Skills
+    document.getElementById("Section_Skills").children[0].innerText = Data.Skills.Title;
     var List_Skills = document.getElementById("List_Skills");
     List_Skills.innerHTML = "";
     for (const Item of Data.Skills.Items) {
@@ -177,12 +179,13 @@ function UpdateContent(Data) {
         List_Skills.appendChild(SectionSubBox);
 
         SectionSubBox.innerHTML = `
-            <h4 class="SectionSubBox_Title">${Item.Label}</h4>
+            <h4 class="SectionSubBox_Title SectionSubBox_Title_Center">${Item.Label}</h4>
             <p class="SectionSubBox_Description">${Item.Text}</p>
         `;
     }
 
     // Work Projects
+    document.getElementById("Section_WorkProjects").children[0].innerText = Data.WorkProjects.Title;
     var List_WorkProjects = document.getElementById("List_WorkProjects");
     List_WorkProjects.innerHTML = "";
     for (const Item of Data.WorkProjects.Items) {
@@ -205,6 +208,7 @@ function UpdateContent(Data) {
     }
 
     // Hobby Projects
+    document.getElementById("Section_HobbyProjects").children[0].innerText = Data.HobbyProjects.Title;
     var List_HobbyProjects = document.getElementById("List_HobbyProjects");
     List_HobbyProjects.innerHTML = "";
     for (const Item of Data.HobbyProjects.Items) {

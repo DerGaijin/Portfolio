@@ -44,22 +44,27 @@ const Content = {
                     Label: "Unreal Engine",
                     Icon: "fa-gamepad",
                     Time: "Februar 2014",
-                    Text: "Schon in jungen Jahren begeisterten mich Videospiele - vor allem die Frage, wie sie im Inneren funktionieren. Diese Neugier führte dazu, dass ich begann, mich intensiv mit der Unreal Engine zu beschäftigen und eigene Projekte umzusetzen.",
+                    Text: "Schon früh faszinierten mich Videospiele - insbesondere die Frage, wie ihre technischen Grundlagen aufgebaut sind. Diese Neugier brachte mich dazu, mich intensiv mit der Unreal Engine auseinanderzusetzen und erste eigene Projekte zu realisieren.",
                 },
-                { Label: "C++", Icon: "fa-square-binary", Time: "April 2015", Text: "Mit der Zeit wuchs der Wunsch, die technischen Hintergründe noch besser zu verstehen. Daher brachte ich mir C++ bei und erweiterte so mein Wissen in der Softwareentwicklung und Spieleprogrammierung." },
+                { Label: "C++", Icon: "fa-square-binary", Time: "April 2015", Text: "Mit der Zeit entstand der Anspruch, die technischen Hintergründe noch umfassender zu verstehen. Daher erlernte ich C++ und vertiefte mein Wissen in der Softwareentwicklung sowie der Spieleprogrammierung." },
                 {
                     Label: "Ausbildung",
                     Icon: "fa-graduation-cap",
                     Time: "Juli 2023",
-                    Text: "Mein Interesse wurde zu einer beruflichen Leidenschaft: 2023 schloss ich erfolgreich meine Ausbildung zum Fachinformatiker für Anwendungsentwicklung ab. Während dieser Zeit konnte ich meine Kenntnisse in Programmierung, Softwaredesign und Projektarbeit deutlich vertiefen.",
+                    Text: "Mein Interesse entwickelte sich zu einer beruflichen Leidenschaft: 2023 schloss ich meine Ausbildung zum Fachinformatiker für Anwendungsentwicklung erfolgreich ab. In dieser Zeit konnte ich meine Fähigkeiten in Programmierung, Softwaredesign und projektorientierter Arbeit wesentlich ausbauen.",
                 },
                 {
                     Label: "Lasertag",
                     Icon: "fa-gun",
                     Time: "September 2024",
-                    Text: "Nach meiner Ausbildung begann ich einen Nebenjob in einer Lasertag-Halle, wo ich mich um technische Abläufe sowie die Pflege und Weiterentwicklung der Website kümmere. Dabei kann ich meine IT-Kenntnisse in einem praktischen Umfeld einbringen.",
+                    Text: "Nach meiner Ausbildung übernahm ich einen Nebenjob in einer Lasertag-Halle, in dem ich sowohl für technische Abläufe als auch für die Pflege und Weiterentwicklung der Website verantwortlich bin. Dabei kann ich meine IT-Kenntnisse gezielt in einem praxisnahen Umfeld einsetzen.",
                 },
-                { Label: "Praktikum", Icon: "fa-briefcase", Time: "März 2025", Text: "Zur weiteren beruflichen Entwicklung absolvierte ich ein Praktikum bei der Absolute Software GmbH, wo ich wertvolle Praxiserfahrungen im Bereich Softwareentwicklung sammeln konnte." },
+                {
+                    Label: "Praktikum",
+                    Icon: "fa-briefcase",
+                    Time: "März 2025",
+                    Text: "Zur weiteren beruflichen Entwicklung absolvierte ich ein Praktikum bei der Absolute Software GmbH, wo ich Einblicke in professionelle Entwicklungsprozesse erhielt und an der Umsetzung konkreter Softwaremodule mitwirkte. Dabei vertiefte ich mein Verständnis moderner Tools, Workflows und kollaborativer Entwicklungsabläufe.",
+                },
             ],
         },
         Skills: {
@@ -67,15 +72,15 @@ const Content = {
             Items: [
                 {
                     Label: "Asperger Autismus",
-                    Text: "Mein Asperger-Autismus ermöglicht es mir, komplexe Sachverhalte auf eine besondere Weise zu erfassen und zu strukturieren. Ich habe ein stark ausgeprägtes logisches und analytisches Denken, erkenne Muster und Zusammenhänge oft schneller als andere und kann mich außergewöhnlich tief in ein Thema einarbeiten. Durch meine Inselbegabung besitze ich die Fähigkeit, mich intensiv und über längere Zeit auf ein Fachgebiet zu konzentrieren, wodurch ich in meinem Interessensbereich sehr präzise, ausdauernd und leistungsfähig bin. Diese Eigenschaften helfen mir besonders in der Anwendungsentwicklung, da ich komplexe Probleme systematisch analysiere und kreative, technisch saubere Lösungen finde.",
+                    Text: "Mein Asperger-Autismus stärkt meine Fähigkeit, komplexe Sachverhalte schnell zu erfassen, klar zu strukturieren und analytisch zu durchdringen. Ich erkenne Muster früh, arbeite mich tief in technische Themen ein und kann mich außergewöhnlich fokussiert und ausdauernd auf ein Fachgebiet konzentrieren. Diese Eigenschaften unterstützen mich besonders in der Anwendungsentwicklung, wo ich Probleme systematisch analysiere und präzise, technisch fundierte Lösungen entwickle.",
                 },
                 {
                     Label: "Autodidaktisches Lernen",
-                    Text: "Ich habe früh gelernt, mir neues Wissen selbstständig anzueignen. Schon in jungen Jahren habe ich mir das Programmieren eigenständig beigebracht - aus Neugier, Herausforderung und Spaß am Lernen. Seitdem nutze ich diese Fähigkeit kontinuierlich, um mich in neue Themen einzuarbeiten, Probleme kreativ zu lösen und meine Kompetenzen eigenverantwortlich weiterzuentwickeln. Diese Lernfähigkeit hilft mir, mich schnell an neue Technologien, Tools oder Arbeitsweisen anzupassen und selbstständig Fortschritte zu erzielen.",
+                    Text: "Ich eignete mir früh die Fähigkeit an, neues Wissen selbstständig zu erarbeiten. Bereits in jungen Jahren brachte ich mir das Programmieren aus eigenem Antrieb bei - getragen von Neugier, dem Reiz technischer Herausforderungen und echter Freude am Lernen. Diese Haltung prägt meine Arbeit bis heute: Ich arbeite mich effizient in neue Themenfelder ein, entwickle kreative Lösungsansätze und erweitere meine Kompetenzen kontinuierlich und eigenverantwortlich. So kann ich mich schnell an neue Technologien, Werkzeuge und Arbeitsmethoden anpassen und zielgerichtet Fortschritte erzielen.",
                 },
                 {
                     Label: "Motiviert",
-                    Text: "Ich zeichne mich durch eine hohe Eigenmotivation und Zielorientierung aus. Herausforderungen sehe ich als Gelegenheit, mein Können unter Beweis zu stellen und weiterzuentwickeln. Diese innere Antriebskraft ermöglicht es mir, auch bei komplexen Aufgaben fokussiert und engagiert zu bleiben. Durch meine Motivation behalte ich stets den Überblick, arbeite effizient auf Ergebnisse hin und trage aktiv zum Fortschritt von Projekten bei.",
+                    Text: "Ich verfüge über ausgeprägte Eigenmotivation und klare Zielorientierung. Herausforderungen betrachte ich als Chance, meine Fähigkeiten gezielt einzusetzen und weiterzuentwickeln. Dieser Antrieb ermöglicht es mir, auch bei komplexen Aufgaben konzentriert und lösungsorientiert zu arbeiten. So behalte ich den Gesamtüberblick, erreiche Ergebnisse effizient und leiste einen spürbaren Beitrag zum Fortschritt jedes Projekts.",
                 },
             ],
         },
@@ -85,7 +90,7 @@ const Content = {
                 {
                     Label: "Carrerabahn Gedankensteuerung",
                     Text: "Mit der Carrera-Bahn Gedankensteuerung wird Kindheitserinnerung auf futuristische Weise neu erfunden. Dieses Projekt ermöglicht es, eine Carrera-Bahn nicht mit dem klassischen Handregler, sondern durch Gedankensteuerung zu bedienen. Über ein EEG-Headset werden Gehirnströme gemessen und in Echtzeit in Steuersignale umgewandelt, die die Geschwindigkeit der Fahrzeuge beeinflussen. Das Ergebnis: Ein faszinierendes Zusammenspiel aus Neurowissenschaft, Signalverarbeitung und Embedded Systems - und ein Schritt in Richtung Mensch-Maschine-Interaktion der Zukunft.",
-                    Tags: ["C#"],
+                    Tags: ["C#", "WPF"],
                 },
                 {
                     Label: "Verkehrssimulation",
@@ -95,12 +100,12 @@ const Content = {
                 {
                     Label: "Multimodaler Chatbot",
                     Text: "Der multimodale Chatbot unterstützt Kundinnen und Kunden im Baumarkt bei der Artikelsuche. Über Sprachbefehle können Produkte einfach abgefragt werden - ganz ohne Tippen oder Bildschirm. Dank integrierter Gesichtserkennung erkennt der Chatbot wiederkehrende Besucher und kann sie individuell ansprechen oder frühere Suchanfragen berücksichtigen. So entsteht ein intuitives, persönliches und modernes Einkaufserlebnis direkt im Markt.",
-                    Tags: ["Python"],
+                    Tags: ["Python", "OpenAI", "Mediapipe"],
                 },
                 {
                     Label: "Schwarzes Brett",
                     Text: "Das Schwarze Brett dient als zentrale Informationsplattform für interne Mitteilungen und Aushänge. Hier werden aktuelle Ankündigungen, wichtige organisatorische Informationen sowie Hinweise zur Belegschaft und Vertretungen veröffentlicht.",
-                    Tags: ["HTML", "CSS", "Javascript"],
+                    Tags: ["PHP", "MYSQL", "HTML", "CSS", "Javascript"],
                 },
                 {
                     Label: "Lasertag Webseite",
@@ -115,7 +120,7 @@ const Content = {
                 {
                     Label: "Game Engine",
                     Text: "Die Game Engine ist ein Prototyp einer modernen, modularen Entwicklungsplattform für interaktive Echtzeitanwendungen. Der Fokus liegt auf einer performanten und flexiblen Architektur, die aktuelle Grafik-APIs wie Vulkan und DirectX 12 unterstützt. Durch einen dedizierten Render Thread werden Logik- und Rendering-Prozesse effizient voneinander getrennt, was eine stabile und flüssige Darstellung ermöglicht. Ein integriertes Asset Management sorgt für ein zentrales und performantes Handling aller Ressourcen, während das Editor Interface Entwicklern eine intuitive Oberfläche zur Szenenverwaltung und Fehleranalyse bietet. Das Material- und Shader-System erlaubt die Erstellung individueller Effekte und sorgt für maximale gestalterische Freiheit. Der Prototyp dient als technische Grundlage für zukünftige Erweiterungen und legt den Schwerpunkt auf Stabilität, Performance und eine klare Architektur.",
-                    Tags: ["C++"],
+                    Tags: ["C++", "DirectX12", "Vulkan"],
                 },
                 {
                     Label: "Reflection System",
@@ -227,21 +232,26 @@ const Content = {
         Timeline: {
             Title: "Timeline",
             Items: [
-                { Label: "Unreal Engine", Icon: "fa-gamepad", Time: "February 2014", Text: "Even at a young age, I was fascinated by video games - especially the question of how they work internally. This curiosity led me to start studying the Unreal Engine intensively and to implement my own projects." },
-                { Label: "C++", Icon: "fa-square-binary", Time: "April 2015", Text: "Over time, the desire to understand the technical background even better grew. Therefore, I taught myself C++ and thus expanded my knowledge in software development and game programming." },
+                { Label: "Unreal Engine", Icon: "fa-gamepad", Time: "February 2014", Text: "Early on, I was fascinated by video games—especially by how their technical foundations are built. This curiosity led me to explore the Unreal Engine in depth and to develop my first own projects." },
+                { Label: "C++", Icon: "fa-square-binary", Time: "April 2015", Text: "Over time, I developed the ambition to gain a more comprehensive understanding of the underlying technology. This led me to learn C++ and deepen my expertise in software development as well as game programming." },
                 {
-                    Label: "Ausbildung",
+                    Label: "Training",
                     Icon: "fa-graduation-cap",
                     Time: "July 2023",
-                    Text: "My interest turned into a professional passion: in 2023, I successfully completed my training as an IT specialist in application development. During this time, I was able to significantly deepen my knowledge in programming, software design, and project work.",
+                    Text: "My initial interest evolved into a professional passion. In 2023, I successfully completed my training as an IT specialist in application development. During this period, I significantly expanded my abilities in programming, software design, and project-oriented work.",
                 },
                 {
                     Label: "Lasertag",
                     Icon: "fa-gun",
                     Time: "September 2024",
-                    Text: "After completing my training, I started a part-time job at a laser tag arena, where I'm responsible for technical operations as well as maintaining and further developing the website. This allows me to apply my IT skills in a practical environment.",
+                    Text: "After completing my training, I took on a part-time position at a laser tag arena, where I am responsible for both technical operations and the maintenance and further development of the website. This role allows me to apply my IT expertise effectively in a hands-on, practical environment.",
                 },
-                { Label: "Praktikum", Icon: "fa-briefcase", Time: "March 2025", Text: "To further my professional development, I completed an internship at Absolute Software GmbH, where I was able to gain valuable practical experience in the field of software development." },
+                {
+                    Label: "Internship",
+                    Icon: "fa-briefcase",
+                    Time: "March 2025",
+                    Text: "For my further professional development, I completed an internship at Absolute Software GmbH, where I gained insight into professional development processes and contributed to the implementation of concrete software modules. This experience deepened my understanding of modern tools, workflows, and collaborative development practices.",
+                },
             ],
         },
         Skills: {
@@ -249,15 +259,15 @@ const Content = {
             Items: [
                 {
                     Label: "Asperger's Autism",
-                    Text: "My Asperger's autism allows me to understand and structure complex issues in a unique way. I have highly developed logical and analytical thinking skills, often recognize patterns and connections faster than others, and can delve exceptionally deeply into a subject. Thanks to my savant-like abilities, I can concentrate intensely on a specific field for extended periods, making me very precise, persistent, and efficient in my area of interest. These qualities are particularly helpful in software development, as I systematically analyze complex problems and find creative, technically sound solutions.",
+                    Text: "My Asperger's autism enhances my ability to grasp complex matters quickly, structure them clearly, and analyze them with precision. I recognize patterns early, dive deeply into technical topics, and maintain exceptional focus and persistence in specialized areas. These strengths are particularly valuable in application development, where I approach problems systematically and create precise, technically sound solutions.",
                 },
                 {
                     Label: "Autodidactic Learning",
-                    Text: "I learned early on to acquire new knowledge independently. Even at a young age, I taught myself programming - out of curiosity, a desire for a challenge, and a love of learning. Since then, I have continuously used this ability to familiarize myself with new topics, solve problems creatively, and independently develop my skills. This learning ability helps me to quickly adapt to new technologies, tools, or working methods and to make progress independently.",
+                    Text: "I developed the ability to acquire new knowledge independently at an early age. Even as a teenager, I taught myself programming-driven by curiosity, the appeal of technical challenges, and a genuine enthusiasm for learning. This mindset continues to shape my work today: I quickly familiarize myself with new domains, develop creative solution approaches, and continuously expand my skills with initiative and accountability. This enables me to adapt rapidly to new technologies, tools, and working methods and to make focused progress.",
                 },
                 {
                     Label: "Motivation",
-                    Text: "I am characterized by a high level of self-motivation and goal orientation. I see challenges as opportunities to demonstrate and further develop my skills. This inner drive allows me to remain focused and committed, even when faced with complex tasks. Thanks to my motivation, I always maintain an overview, work efficiently towards results, and actively contribute to the progress of projects.",
+                    Text: "I possess strong self-motivation and a clear sense of purpose. I view challenges as opportunities to apply and expand my skills in a targeted way. This drive enables me to remain focused and solution-oriented, even when dealing with complex tasks. As a result, I maintain a comprehensive overview, deliver results efficiently, and make a meaningful contribution to the progress of every project.",
                 },
             ],
         },
@@ -265,28 +275,28 @@ const Content = {
             Title: "Work Projects",
             Items: [
                 {
-                    Label: "Carrerabahn Gedankensteuerung",
-                    Text: "Mit der Carrera-Bahn Gedankensteuerung wird Kindheitserinnerung auf futuristische Weise neu erfunden. Dieses Projekt ermöglicht es, eine Carrera-Bahn nicht mit dem klassischen Handregler, sondern durch Gedankensteuerung zu bedienen. Über ein EEG-Headset werden Gehirnströme gemessen und in Echtzeit in Steuersignale umgewandelt, die die Geschwindigkeit der Fahrzeuge beeinflussen. Das Ergebnis: Ein faszinierendes Zusammenspiel aus Neurowissenschaft, Signalverarbeitung und Embedded Systems - und ein Schritt in Richtung Mensch-Maschine-Interaktion der Zukunft.",
-                    Tags: ["C#"],
+                    Label: "Carrera Track Mind Control",
+                    Text: "With the mind-controlled Carrera racetrack, a childhood classic is reimagined in a futuristic way. This project enables a Carrera track to be operated not with the traditional hand controller, but through thought alone. An EEG headset measures brain activity and converts it in real time into control signals that regulate the speed of the cars. The result is a compelling interplay of neuroscience, signal processing, and embedded systems—and a step toward the human-machine interfaces of the future.",
+                    Tags: ["C#", "WPF"],
                 },
                 {
                     Label: "Traffic Simulation",
-                    Text: "Traffic simulation is a software project for modeling and analyzing road traffic. It simulates the behavior of vehicles, traffic lights, and road users in a virtual environment. The goal is to visualize traffic flows, identify bottlenecks, and improve the efficiency of traffic control systems.",
+                    Text: "The traffic simulation is a software project for modeling and analyzing road traffic. It simulates the behavior of vehicles, traffic light cycles, and other road users within a virtual environment. Its purpose is to visualize traffic flows, identify bottlenecks, and improve the efficiency of traffic control systems.",
                     Tags: ["C++", "Unreal Engine"],
                 },
                 {
                     Label: "Multimodal Chatbot",
-                    Text: "The multimodal chatbot assists customers in the DIY store with product searches. Products can be easily queried using voice commands - without any typing or screen interaction. Thanks to integrated facial recognition, the chatbot recognizes returning customers and can address them individually or take previous search queries into account. This creates an intuitive, personalized, and modern shopping experience right in the store.",
-                    Tags: ["Python"],
+                    Text: "The multimodal chatbot assists customers in hardware stores with product searches. Using voice commands, products can be requested effortlessly—without typing or interacting with a screen. With integrated facial recognition, the chatbot identifies returning visitors and can address them personally or take previous queries into account. This creates an intuitive, personalized, and modern in-store shopping experience.",
+                    Tags: ["Python", "OpenAI", "Mediapipe"],
                 },
                 {
                     Label: "Notice Board",
-                    Text: "The notice board serves as a central information platform for internal announcements and notices. Current announcements, important organizational information, and notices regarding staff and representatives are published here.",
-                    Tags: ["HTML", "CSS", "Javascript"],
+                    Text: "The notice board serves as a central information platform for internal communications and postings. It provides up-to-date announcements, essential organizational information, and notices regarding staff matters and substitutions.",
+                    Tags: ["PHP", "MYSQL", "HTML", "CSS", "Javascript"],
                 },
                 {
                     Label: "Lasertag Website",
-                    Text: "This website was created for our laser tag arena to provide visitors with quick and clear information about our offers, opening hours, and prices. It features a modern, responsive design and allows customers to contact us, book games, and discover current promotions. The goal was to create an easy-to-maintain and appealing online presence that digitally conveys the experience of the arena.",
+                    Text: "This website was created for our laser tag arena to provide visitors with a clear and efficient overview of available offers, opening hours, and pricing. It features a modern, responsive design and allows customers to get in touch, book games, and explore current promotions. The goal was to create an easy-to-maintain and engaging online presence that conveys the arena experience even before visitors arrive.",
                     Tags: ["HTML", "CSS", "Javascript"],
                 },
             ],
@@ -296,37 +306,37 @@ const Content = {
             Items: [
                 {
                     Label: "Game Engine",
-                    Text: "The game engine is a prototype of a modern, modular development platform for interactive real-time applications. The focus is on a high-performance and flexible architecture that supports current graphics APIs such as Vulkan and DirectX 12. A dedicated render thread efficiently separates logic and rendering processes, enabling stable and fluid rendering. Integrated asset management ensures centralized and efficient handling of all resources, while the editor interface provides developers with an intuitive interface for scene management and debugging. The material and shader system allows for the creation of custom effects and provides maximum creative freedom. The prototype serves as the technical foundation for future extensions and emphasizes stability, performance, and a clear architecture.",
-                    Tags: ["C++"],
+                    Text: "The game engine is a prototype of a modern, modular development platform for interactive real-time applications. Its focus is on a high-performance, flexible architecture that supports contemporary graphics APIs such as Vulkan and DirectX 12. A dedicated render thread cleanly separates logic and rendering processes, ensuring stable and smooth output. Integrated asset management provides a centralized and efficient way to handle all resources, while the editor interface offers developers an intuitive environment for scene management and debugging. The material and shader system enables the creation of custom effects, giving developers maximum creative flexibility. The prototype serves as a technical foundation for future extensions, emphasizing stability, performance, and a clear architectural design.",
+                    Tags: ["C++", "DirectX12", "Vulkan"],
                 },
                 {
                     Label: "Reflection System",
-                    Text: "A flexible reflection system for C++ that provides developers with an easy way to access and utilize type information at runtime. The project allows for dynamic registration and inspection of classes, functions, and variables - ideal for applications such as serialization, debugging, or tool integration.",
+                    Text: "A flexible reflection system for C++ that provides developers with a straightforward way to capture and leverage type information at runtime. The project enables dynamic registration and inspection of classes, functions, and variables, making it well-suited for use cases such as serialization, debugging, and tool integration.",
                     Tags: ["C++"],
                 },
                 {
                     Label: "C++ Preprocessor",
-                    Text: "The C++ preprocessor is a lightweight tool for analyzing and preprocessing C++ code. It supports the automatic detection and replacement of macros, the inclusion of header files, and conditional compilation. Its modular design makes it easy to integrate the tool into existing build processes or use it for code analysis.",
+                    Text: "The C++ preprocessor is a lightweight tool for analyzing and preprocessing C++ code. It supports automatic macro detection and substitution, header file inclusion, and conditional compilation. Its modular architecture allows it to be easily integrated into existing build processes or used for code analysis.",
                     Tags: ["C++"],
                 },
                 {
                     Label: "Natural Language",
-                    Text: "Natural Language is a research project in the field of natural language processing (NLP) that focuses on connecting text comprehension with semantic knowledge structures. The goal is to develop methods for more precisely analyzing and interpreting language using a knowledge graph. This allows concepts, relationships, and meanings in texts to be automatically identified and transformed into structured knowledge models.",
+                    Text: "Natural Language is a research project in the field of natural language processing (NLP) that focuses on integrating text comprehension with semantic knowledge structures. Its goal is to develop methods that enable more precise analysis and interpretation of language using a knowledge graph. This approach allows concepts, relationships, and meanings within texts to be automatically identified and transformed into structured knowledge models.",
                     Tags: ["C++"],
                 },
                 {
                     Label: "Async Console Input/Output",
-                    Text: "This project implements an asynchronous input and output system for the console in C++. It allows for the simultaneous processing of user input and program output without blocking the main thread. By utilizing multithreading and non-blocking streams, it achieves smooth interaction with the console - ideal for tools, games, or applications requiring real-time feedback.",
+                    Text: "This project implements an asynchronous input/output system for the console in C++. It enables simultaneous processing of user input and program output without blocking the main thread. By using multithreading and non-blocking streams, it provides smooth console interaction—ideal for tools, games, or applications that require real-time feedback.",
                     Tags: ["C++"],
                 },
                 {
                     Label: "Trading Robot",
-                    Text: "The trading robot is an automated trading system for the MetaTrader 5 platform. It analyzes market data in real time, identifies trading opportunities, and executes trades fully automatically. The focus is on stable performance, clear trading rules, and efficient execution without manual intervention. The goal of the project is to automate trading and avoid human errors through consistent strategy execution.",
+                    Text: "The trading robot is an automated trading system designed for the MetaTrader 5 platform. It analyzes market data in real time, identifies trading opportunities, and executes positions fully automatically. The focus is on stable performance, clear trading rules, and efficient execution without manual intervention. The goal of the project is to automate trading and eliminate human error through consistent strategy execution.",
                     Tags: ["MQL5"],
                 },
                 {
                     Label: "MQL Language",
-                    Text: "The MQL Language extension brings full support for the MQL4 and MQL5 programming languages to Visual Studio Code. It offers syntax highlighting, code completion, error detection, and helpful snippets to significantly simplify the development of Expert Advisors, indicators, and scripts for MetaTrader. With its clean design and stable integration, the extension provides a modern, efficient, and enjoyable development experience within the familiar VS Code environment.",
+                    Text: "The MQL Language Extension delivers full support for the MQL4 and MQL5 programming languages in Visual Studio Code. It provides syntax highlighting, code completion, error detection, and helpful snippets that significantly streamline the development of Expert Advisors, indicators, and scripts for MetaTrader. With its clean design and robust integration, the extension ensures a modern, efficient, and enjoyable development experience within the familiar VS Code environment.",
                     Tags: ["VS Code", "Javascript"],
                 },
             ],
