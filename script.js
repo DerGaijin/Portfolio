@@ -106,6 +106,8 @@ function UpdateContent(Data) {
     }
     document.getElementById("MH_SubTitle").innerHTML = Data.Header.SubTitle;
 
+    TryReplaceHeaderAvatar(Query.Name);
+
     // Main Navigation
     var MH_Navigation = document.getElementById("MainNavigation");
     MH_Navigation.innerHTML = "";
@@ -287,4 +289,15 @@ function ChangeLanguage(Lang) {
             Item.classList.add("FlipStop");
         }
     }, 500);
+}
+
+async function TryReplaceHeaderAvatar(Password) {
+    const ImagePath = "Leon 01.jpg.enc";
+    try {
+        const Response = await fetch(ImagePath);
+        const Ciphertext = await Response.text();
+        const ImageBytes = CryptoJS.AES.decrypt(Ciphertext, Password);
+        const DecryptedDataUrl = ImageBytes.toString(CryptoJS.enc.Utf8);
+        document.getElementById("HeaderAvatar").src = DecryptedDataUrl;
+    } catch (err) {}
 }
