@@ -292,7 +292,7 @@ function ChangeLanguage(Lang) {
 }
 
 async function TryReplaceHeaderAvatar(Password) {
-    const ImagePath = "Leon 01.jpg.enc";
+    const ImagePath = "Avatar 01.jpg.enc";
     try {
         const Response = await fetch(ImagePath);
         const Ciphertext = await Response.text();

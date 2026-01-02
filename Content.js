@@ -88,11 +88,6 @@ const Content = {
             Title: "Arbeitsprojekte",
             Items: [
                 {
-                    Label: "Carrerabahn Gedankensteuerung",
-                    Text: "Mit der Carrera-Bahn Gedankensteuerung wird Kindheitserinnerung auf futuristische Weise neu erfunden. Dieses Projekt ermöglicht es, eine Carrera-Bahn nicht mit dem klassischen Handregler, sondern durch Gedankensteuerung zu bedienen. Über ein EEG-Headset werden Gehirnströme gemessen und in Echtzeit in Steuersignale umgewandelt, die die Geschwindigkeit der Fahrzeuge beeinflussen. Das Ergebnis: Ein faszinierendes Zusammenspiel aus Neurowissenschaft, Signalverarbeitung und Embedded Systems - und ein Schritt in Richtung Mensch-Maschine-Interaktion der Zukunft.",
-                    Tags: ["C#", "WPF"],
-                },
-                {
                     Label: "Verkehrssimulation",
                     Text: "Die Verkehrssimulation ist ein Softwareprojekt zur Modellierung und Analyse des Straßenverkehrs. Sie simuliert das Verhalten von Fahrzeugen, Ampelschaltungen und Verkehrsteilnehmern in einer virtuellen Umgebung. Ziel ist es, Verkehrsflüsse zu visualisieren, Engpässe zu erkennen und die Effizienz von Verkehrssteuerungen zu verbessern.",
                     Tags: ["C++", "Unreal Engine"],
@@ -101,11 +96,6 @@ const Content = {
                     Label: "Multimodaler Chatbot",
                     Text: "Der multimodale Chatbot unterstützt Kundinnen und Kunden im Baumarkt bei der Artikelsuche. Über Sprachbefehle können Produkte einfach abgefragt werden - ganz ohne Tippen oder Bildschirm. Dank integrierter Gesichtserkennung erkennt der Chatbot wiederkehrende Besucher und kann sie individuell ansprechen oder frühere Suchanfragen berücksichtigen. So entsteht ein intuitives, persönliches und modernes Einkaufserlebnis direkt im Markt.",
                     Tags: ["Python", "OpenAI", "Mediapipe"],
-                },
-                {
-                    Label: "Schwarzes Brett",
-                    Text: "Das Schwarze Brett dient als zentrale Informationsplattform für interne Mitteilungen und Aushänge. Hier werden aktuelle Ankündigungen, wichtige organisatorische Informationen sowie Hinweise zur Belegschaft und Vertretungen veröffentlicht.",
-                    Tags: ["PHP", "MYSQL", "HTML", "CSS", "Javascript"],
                 },
                 {
                     Label: "Lasertag Webseite",
@@ -131,21 +121,6 @@ const Content = {
                     Label: "C++ Preprocessor",
                     Text: "Der C++ Preprocessor ist ein leichtgewichtiges Tool zur Analyse und Vorverarbeitung von C++-Code. Er unterstützt das automatische Erkennen und Ersetzen von Makros, das Einbinden von Header-Dateien sowie die bedingte Kompilierung. Durch den modularen Aufbau lässt sich das Tool einfach in bestehende Build-Prozesse integrieren oder zur Code-Analyse verwenden.",
                     Tags: ["C++"],
-                },
-                {
-                    Label: "Natural Language",
-                    Text: "Natural Language ist ein Forschungsprojekt im Bereich der natürlichen Sprachverarbeitung (NLP), das sich auf die Verbindung von Textverständnis und semantischen Wissensstrukturen konzentriert. Ziel ist die Entwicklung von Methoden, um Sprache mithilfe eines Knowledge Graphs präziser zu analysieren und zu interpretieren. Dadurch können Konzepte, Beziehungen und Bedeutungen in Texten automatisch erkannt und in strukturierte Wissensmodelle überführt werden.",
-                    Tags: ["C++"],
-                },
-                {
-                    Label: "Async Console Input/Output",
-                    Text: "Dieses Projekt implementiert ein asynchrones Ein- und Ausgabesystem für die Konsole in C++. Es ermöglicht die gleichzeitige Verarbeitung von Benutzereingaben und Programmausgaben, ohne dass der Hauptthread blockiert wird. Durch den Einsatz von Multithreading und nicht-blockierenden Streams wird eine flüssige Interaktion mit der Konsole erreicht - ideal für Tools, Spiele oder Anwendungen mit Echtzeit-Feedback.",
-                    Tags: ["C++"],
-                },
-                {
-                    Label: "Trading Robot",
-                    Text: "Der Trading Robot ist ein automatisiertes Handelssystem für die MetaTrader-5-Plattform. Er analysiert Marktdaten in Echtzeit, erkennt Handelschancen und führt Positionen vollautomatisch aus. Der Fokus liegt auf stabiler Performance, klaren Handelsregeln und effizienter Umsetzung ohne manuelles Eingreifen. Ziel des Projekts ist es, den Handel zu automatisieren und durch konsequente Strategieausführung menschliche Fehler zu vermeiden.",
-                    Tags: ["MQL5"],
                 },
                 {
                     Label: "MQL Language",
@@ -275,11 +250,6 @@ const Content = {
             Title: "Work Projects",
             Items: [
                 {
-                    Label: "Carrera Track Mind Control",
-                    Text: "With the mind-controlled Carrera racetrack, a childhood classic is reimagined in a futuristic way. This project enables a Carrera track to be operated not with the traditional hand controller, but through thought alone. An EEG headset measures brain activity and converts it in real time into control signals that regulate the speed of the cars. The result is a compelling interplay of neuroscience, signal processing, and embedded systems—and a step toward the human-machine interfaces of the future.",
-                    Tags: ["C#", "WPF"],
-                },
-                {
                     Label: "Traffic Simulation",
                     Text: "The traffic simulation is a software project for modeling and analyzing road traffic. It simulates the behavior of vehicles, traffic light cycles, and other road users within a virtual environment. Its purpose is to visualize traffic flows, identify bottlenecks, and improve the efficiency of traffic control systems.",
                     Tags: ["C++", "Unreal Engine"],
@@ -288,11 +258,6 @@ const Content = {
                     Label: "Multimodal Chatbot",
                     Text: "The multimodal chatbot assists customers in hardware stores with product searches. Using voice commands, products can be requested effortlessly—without typing or interacting with a screen. With integrated facial recognition, the chatbot identifies returning visitors and can address them personally or take previous queries into account. This creates an intuitive, personalized, and modern in-store shopping experience.",
                     Tags: ["Python", "OpenAI", "Mediapipe"],
-                },
-                {
-                    Label: "Notice Board",
-                    Text: "The notice board serves as a central information platform for internal communications and postings. It provides up-to-date announcements, essential organizational information, and notices regarding staff matters and substitutions.",
-                    Tags: ["PHP", "MYSQL", "HTML", "CSS", "Javascript"],
                 },
                 {
                     Label: "Lasertag Website",
@@ -318,21 +283,6 @@ const Content = {
                     Label: "C++ Preprocessor",
                     Text: "The C++ preprocessor is a lightweight tool for analyzing and preprocessing C++ code. It supports automatic macro detection and substitution, header file inclusion, and conditional compilation. Its modular architecture allows it to be easily integrated into existing build processes or used for code analysis.",
                     Tags: ["C++"],
-                },
-                {
-                    Label: "Natural Language",
-                    Text: "Natural Language is a research project in the field of natural language processing (NLP) that focuses on integrating text comprehension with semantic knowledge structures. Its goal is to develop methods that enable more precise analysis and interpretation of language using a knowledge graph. This approach allows concepts, relationships, and meanings within texts to be automatically identified and transformed into structured knowledge models.",
-                    Tags: ["C++"],
-                },
-                {
-                    Label: "Async Console Input/Output",
-                    Text: "This project implements an asynchronous input/output system for the console in C++. It enables simultaneous processing of user input and program output without blocking the main thread. By using multithreading and non-blocking streams, it provides smooth console interaction—ideal for tools, games, or applications that require real-time feedback.",
-                    Tags: ["C++"],
-                },
-                {
-                    Label: "Trading Robot",
-                    Text: "The trading robot is an automated trading system designed for the MetaTrader 5 platform. It analyzes market data in real time, identifies trading opportunities, and executes positions fully automatically. The focus is on stable performance, clear trading rules, and efficient execution without manual intervention. The goal of the project is to automate trading and eliminate human error through consistent strategy execution.",
-                    Tags: ["MQL5"],
                 },
                 {
                     Label: "MQL Language",

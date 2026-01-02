@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Portfolio – Dein Name</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Portfolio eines Softwareentwicklers" />
+
+        <!-- Google Font (optional) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+        <style>
+            :root {
+                --bg: #050816;
+                --bg-alt: #0b1020;
+                --accent: #4f46e5;
+                --accent-soft: rgba(79, 70, 229, 0.12);
+                --accent-strong: rgba(79, 70, 229, 0.28);
+                --text: #e4e6ef;
+                --muted: #8b91a8;
+                --border: rgba(255, 255, 255, 0.08);
+                --danger: #f97373;
+                --radius-lg: 18px;
+                --radius-xl: 24px;
+                --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.55);
+                --transition-fast: 160ms ease-out;
+                --transition-med: 220ms ease-out;
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                background: radial-gradient(circle at 0% -20%, #4f46e522 0, transparent 55%), radial-gradient(circle at 100% 120%, #22c55e22 0, transparent 55%), var(--bg);
+                color: var(--text);
+                line-height: 1.6;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            .page-wrapper {
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 1120px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+
+            /* Navigation */
+            .nav {
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                backdrop-filter: blur(18px);
+                background: linear-gradient(to bottom, rgba(5, 8, 22, 0.96), rgba(5, 8, 22, 0.84), transparent);
+                border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+            }
+
+            .nav-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.9rem 0;
+                gap: 1.5rem;
+            }
+
+            .nav-left {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .nav-logo {
+                width: 34px;
+                height: 34px;
+                border-radius: 999px;
+                background: radial-gradient(circle at 0 0, #a855f7, #4f46e5 52%, #0ea5e9 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.5), 0 10px 25px rgba(15, 23, 42, 0.55);
+                font-weight: 700;
+                font-size: 0.95rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .nav-title {
+                display: flex;
+                flex-direction: column;
+                gap: 0.05rem;
+            }
+
+            .nav-title-main {
+                font-size: 0.96rem;
+                font-weight: 600;
+            }
+
+            .nav-title-sub {
+                font-size: 0.77rem;
+                color: var(--muted);
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.2rem;
+                align-items: center;
+                font-size: 0.86rem;
+            }
+
+            .nav-link {
+                position: relative;
+                padding: 0.35rem 0;
+                color: var(--muted);
+                transition: color var(--transition-fast);
+            }
+
+            .nav-link::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 0;
+                height: 2px;
+                border-radius: 999px;
+                background: linear-gradient(to right, #a855f7, #4f46e5);
+                transition: width var(--transition-med);
+            }
+
+            .nav-link:hover {
+                color: var(--text);
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .nav-cta {
+                padding: 0.55rem 0.95rem;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.35);
+                background: radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.35), rgba(15, 23, 42, 0.95));
+                box-shadow: 0 14px 30px rgba(15, 23, 42, 0.65);
+                font-size: 0.8rem;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 0.35rem;
+                transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+            }
+
+            .nav-cta span:last-child {
+                font-size: 1rem;
+            }
+
+            .nav-cta:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+                border-color: rgba(129, 140, 248, 0.85);
+            }
+
+            /* Hero */
+            .hero {
+                padding: 4rem 0 3.5rem;
+            }
+
+            .hero-inner {
+                max-width: 780px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-kicker {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                color: var(--muted);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hero-kicker-dot {
+                width: 9px;
+                height: 9px;
+                border-radius: 999px;
+                background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+                box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+            }
+
+            .hero-title {
+                margin-top: 1.1rem;
+                font-size: clamp(2.35rem, 3.2vw + 1.2rem, 3.4rem);
+                font-weight: 700;
+                letter-spacing: -0.04em;
+                line-height: 1.05;
+            }
+
+            .hero-title span.accent {
+                background: linear-gradient(120deg, #a855f7, #4f46e5, #22c55e);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            .hero-subtitle {
+                margin-top: 1rem;
+                font-size: 0.98rem;
+                max-width: 36rem;
+                color: var(--muted);
+            }
+
+            .hero-tags {
+                margin-top: 1.25rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .pill {
+                font-size: 0.78rem;
+                padding: 0.3rem 0.7rem;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.4);
+                color: var(--muted);
+                background: rgba(15, 23, 42, 0.9);
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                backdrop-filter: blur(10px);
+            }
+
+            .pill::before {
+                content: "";
+                width: 6px;
+                height: 6px;
+                border-radius: 999px;
+                background: radial-gradient(circle at 30% 30%, #38bdf8, #4f46e5);
+            }
+
+            .hero-actions {
+                margin-top: 1.7rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                font-size: 0.88rem;
+                border-radius: 999px;
+                padding: 0.7rem 1.1rem;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                border: 1px solid transparent;
+                cursor: pointer;
+                background: none;
+                color: inherit;
+                transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+            }
+
+            .btn-primary {
+                background: radial-gradient(circle at 0 0, #a855f7, #4f46e5);
+                border-color: rgba(129, 140, 248, 0.9);
+                box-shadow: 0 18px 40px rgba(30, 64, 175, 0.8);
+                font-weight: 500;
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 26px 60px rgba(30, 64, 175, 1);
+            }
+
+            .btn-ghost {
+                border-color: rgba(148, 163, 184, 0.5);
+                background: rgba(15, 23, 42, 0.9);
+                color: var(--muted);
+            }
+
+            .btn-ghost:hover {
+                border-color: rgba(129, 140, 248, 0.9);
+                background: radial-gradient(circle at 0 0, rgba(148, 163, 248, 0.15), rgba(15, 23, 42, 0.96));
+                color: var(--text);
+                transform: translateY(-1px);
+                box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+            }
+
+            .btn-icon {
+                font-size: 1.1rem;
+            }
+
+            .hero-meta {
+                margin-top: 1.1rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.25rem;
+                font-size: 0.8rem;
+                color: var(--muted);
+            }
+
+            .hero-meta-item strong {
+                display: block;
+                font-size: 0.9rem;
+                color: var(--text);
+                margin-bottom: 0.25rem;
+            }
+
+            /* Sections */
+            section {
+                padding: 3rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 1.6rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .section-title-block {
+                display: flex;
+                flex-direction: column;
+                gap: 0.15rem;
+            }
+
+            .section-kicker {
+                font-size: 0.76rem;
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                color: var(--muted);
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+
+            .section-description {
+                font-size: 0.86rem;
+                max-width: 22rem;
+                color: var(--muted);
+            }
+
+            /* About */
+            .about-grid {
+                display: grid;
+                grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+                gap: 1.8rem;
+            }
+
+            .card {
+                border-radius: var(--radius-lg);
+                border: 1px solid var(--border);
+                background: rgba(15, 23, 42, 0.96);
+                box-shadow: 0 16px 40px rgba(15, 23, 42, 0.7);
+                padding: 1.4rem 1.4rem 1.5rem;
+            }
+
+            .card-muted {
+                background: radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.12), rgba(15, 23, 42, 0.96));
+            }
+
+            .about-text p {
+                font-size: 0.9rem;
+                color: var(--muted);
+                margin-bottom: 0.7rem;
+            }
+
+            .about-list {
+                margin-top: 0.4rem;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0.45rem;
+                font-size: 0.82rem;
+                color: var(--muted);
+            }
+
+            .about-list span {
+                display: flex;
+                align-items: center;
+                gap: 0.35rem;
+            }
+
+            .about-list span::before {
+                content: "•";
+                color: #4ade80;
+                font-size: 1rem;
+            }
+
+            /* Skills */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 0.8rem;
+            }
+
+            .skill-badge {
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.55);
+                background: rgba(15, 23, 42, 0.95);
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.4rem;
+                color: var(--muted);
+            }
+
+            .skill-name {
+                font-weight: 500;
+                color: var(--text);
+                font-size: 0.82rem;
+            }
+
+            .skill-level {
+                font-size: 0.75rem;
+                opacity: 0.8;
+            }
+
+            /* Projects */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.1rem;
+            }
+
+            .project-card {
+                position: relative;
+                border-radius: var(--radius-lg);
+                border: 1px solid rgba(148, 163, 184, 0.4);
+                background: radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.16), rgba(15, 23, 42, 0.98));
+                padding: 1rem 1rem 1.1rem;
+                box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+                overflow: hidden;
+                transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+            }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(129, 140, 248, 0.9);
+                box-shadow: 0 26px 62px rgba(15, 23, 42, 0.9);
+            }
+
+            .project-tag {
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                color: var(--muted);
+                margin-bottom: 0.4rem;
+            }
+
+            .project-title {
+                font-size: 0.98rem;
+                font-weight: 600;
+                margin-bottom: 0.35rem;
+            }
+
+            .project-desc {
+                font-size: 0.83rem;
+                color: var(--muted);
+                margin-bottom: 0.65rem;
+            }
+
+            .project-meta {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 0.8rem;
+                font-size: 0.8rem;
+                color: var(--muted);
+            }
+
+            .project-tech {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+
+            .project-tech span {
+                padding: 0.15rem 0.55rem;
+                border-radius: 999px;
+                font-size: 0.72rem;
+                border: 1px solid rgba(148, 163, 184, 0.5);
+                background: rgba(15, 23, 42, 0.9);
+            }
+
+            .project-links {
+                display: flex;
+                gap: 0.35rem;
+                font-size: 0.78rem;
+            }
+
+            .project-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25rem;
+                padding: 0.25rem 0.55rem;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.4);
+                background: rgba(15, 23, 42, 0.9);
+                transition: border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+            }
+
+            .project-link:hover {
+                border-color: rgba(129, 140, 248, 0.9);
+                background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.18), rgba(15, 23, 42, 0.98));
+                color: var(--text);
+            }
+
+            /* Experience */
+            .timeline {
+                border-left: 1px solid rgba(148, 163, 184, 0.5);
+                padding-left: 1.2rem;
+                margin-left: 0.4rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .timeline-item {
+                position: relative;
+                padding-left: 0.2rem;
+            }
+
+            .timeline-dot {
+                position: absolute;
+                left: -1.38rem;
+                top: 0.2rem;
+                width: 11px;
+                height: 11px;
+                border-radius: 999px;
+                background: radial-gradient(circle at 30% 30%, #a855f7, #4f46e5);
+                box-shadow: 0 0 0 5px var(--accent-soft);
+            }
+
+            .timeline-role {
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+
+            .timeline-company {
+                font-size: 0.85rem;
+                color: var(--muted);
+            }
+
+            .timeline-meta {
+                font-size: 0.78rem;
+                color: var(--muted);
+                margin-top: 0.2rem;
+            }
+
+            .timeline-desc {
+                margin-top: 0.4rem;
+                font-size: 0.83rem;
+                color: var(--muted);
+            }
+
+            .timeline-tags {
+                margin-top: 0.4rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+                font-size: 0.74rem;
+            }
+
+            .timeline-tags span {
+                padding: 0.18rem 0.45rem;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.4);
+                background: rgba(15, 23, 42, 0.9);
+            }
+
+            /* Contact */
+            .contact-grid {
+                display: grid;
+                grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+                gap: 1.8rem;
+                align-items: stretch;
+            }
+
+            .contact-details {
+                font-size: 0.88rem;
+                color: var(--muted);
+            }
+
+            .contact-list {
+                margin-top: 0.8rem;
+                display: grid;
+                gap: 0.35rem;
+            }
+
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 0.45rem;
+                font-size: 0.86rem;
+                color: var(--muted);
+            }
+
+            .contact-item span.icon {
+                width: 26px;
+                height: 26px;
+                border-radius: 999px;
+                border: 1px solid rgba(148, 163, 184, 0.6);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.9rem;
+            }
+
+            .contact-form {
+                display: grid;
+                gap: 0.7rem;
+                font-size: 0.84rem;
+            }
+
+            .field {
+                display: grid;
+                gap: 0.28rem;
+            }
+
+            .field label {
+                font-size: 0.82rem;
+                color: var(--muted);
+            }
+
+            .field input,
+            .field textarea {
+                border-radius: 12px;
+                border: 1px solid rgba(148, 163, 184, 0.5);
+                background: rgba(15, 23, 42, 0.95);
+                padding: 0.55rem 0.7rem;
+                font: inherit;
+                font-size: 0.86rem;
+                color: var(--text);
+                outline: none;
+                transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+                resize: vertical;
+            }
+
+            .field input:focus,
+            .field textarea:focus {
+                border-color: rgba(129, 140, 248, 0.95);
+                box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.6);
+                background: rgba(15, 23, 42, 1);
+            }
+
+            .contact-note {
+                font-size: 0.78rem;
+                color: var(--muted);
+                margin-top: 0.25rem;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 1.5rem 0 2.2rem;
+                border-top: 1px solid rgba(148, 163, 184, 0.2);
+                margin-top: 2rem;
+                font-size: 0.78rem;
+                color: var(--muted);
+            }
+
+            .footer-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .footer-links {
+                display: flex;
+                gap: 0.9rem;
+                flex-wrap: wrap;
+            }
+
+            .footer-links a {
+                text-decoration: underline;
+                text-decoration-color: rgba(148, 163, 184, 0.5);
+                text-underline-offset: 3px;
+            }
+
+            /* Reveal Animation */
+            .reveal {
+                opacity: 0;
+                transform: translateY(18px);
+                transition: opacity 420ms ease-out, transform 420ms ease-out;
+            }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Responsive */
+            @media (max-width: 960px) {
+                .hero {
+                    padding-top: 3.1rem;
+                }
+
+                .about-grid,
+                .contact-grid {
+                    grid-template-columns: minmax(0, 1fr);
+                }
+
+                .projects-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .skills-grid {
+                    grid-template-columns: repeat(3, minmax(0, 1fr));
+                }
+
+                .nav-links {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 720px) {
+                .container {
+                    padding-inline: 1.1rem;
+                }
+
+                .projects-grid {
+                    grid-template-columns: minmax(0, 1fr);
+                }
+
+                .skills-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .nav-inner {
+                    padding-block: 0.7rem;
+                }
+
+                .hero-inner {
+                    max-width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <!-- Navigation -->
+            <header class="nav" id="top">
+                <div class="container nav-inner">
+                    <div class="nav-left">
+                        <div class="nav-logo">DN</div>
+                        <div class="nav-title">
+                            <div class="nav-title-main">Dein Name</div>
+                            <div class="nav-title-sub">Softwareentwickler · Portfolio</div>
+                        </div>
+                    </div>
+                    <nav class="nav-links">
+                        <a href="#about" class="nav-link">Über mich</a>
+                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="#projects" class="nav-link">Projekte</a>
+                        <a href="#experience" class="nav-link">Erfahrung</a>
+                        <a href="#contact" class="nav-link">Kontakt</a>
+                        <a href="#contact" class="nav-cta">
+                            <span>Verfügbarkeit</span>
+                            <span>↗</span>
+                        </a>
+                    </nav>
+                </div>
+            </header>
+
+            <main>
+                <!-- Hero -->
+                <section class="hero">
+                    <div class="container">
+                        <div class="hero-inner">
+                            <div>
+                                <div class="hero-kicker">
+                                    <span class="hero-kicker-dot"></span>
+                                    <span>Verfügbar für Remote & Hybrid</span>
+                                </div>
+                                <h1 class="hero-title">Ich baue <span class="accent">skalierbare Web- und Backend-Lösungen</span>, die zuverlässig im Alltag funktionieren.</h1>
+                                <p class="hero-subtitle">Fokus auf sauberen Code, wartbare Architekturen und pragmatische Lösungen. Erfahrung von Greenfield-Projekten bis hin zu komplexen Legacy-Systemen.</p>
+
+                                <div class="hero-tags">
+                                    <span class="pill">TypeScript · React · Node.js</span>
+                                    <span class="pill">Clean Architecture & Testing</span>
+                                    <span class="pill">REST & GraphQL APIs</span>
+                                </div>
+
+                                <div class="hero-actions">
+                                    <a href="#contact" class="btn btn-primary">
+                                        <span>Projekt anfragen</span>
+                                        <span class="btn-icon">✉</span>
+                                    </a>
+                                    <a href="#" class="btn btn-ghost">
+                                        <span>CV herunterladen (PDF)</span>
+                                        <span class="btn-icon">⬇</span>
+                                    </a>
+                                </div>
+
+                                <div class="hero-meta">
+                                    <div class="hero-meta-item">
+                                        <strong>+X Jahre Erfahrung</strong>
+                                        <span>In Produktteams, Start-ups & Agenturen</span>
+                                    </div>
+                                    <div class="hero-meta-item">
+                                        <strong>Schwerpunkte</strong>
+                                        <span>Web-Apps, APIs, Architektur & Performance</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Über mich -->
+                <section id="about">
+                    <div class="container">
+                        <div class="section-header">
+                            <div class="section-title-block">
+                                <span class="section-kicker">Über mich</span>
+                                <h2 class="section-title">Wer ich bin und wie ich arbeite</h2>
+                            </div>
+                            <p class="section-description">Ich unterstütze Teams dabei, robuste Software zu bauen – mit Fokus auf Lesbarkeit, klare Architektur und gute Developer Experience.</p>
+                        </div>
+
+                        <div class="about-grid">
+                            <div class="card about-text reveal">
+                                <p>Ich bin Softwareentwickler mit Schwerpunkt auf Web- und Backend-Entwicklung. Ich übernehme gerne Verantwortung für ganze Features – vom Konzept über Architektur und Implementierung bis zu Monitoring und kontinuierlicher Verbesserung.</p>
+                                <p>In Projekten achte ich besonders auf nachvollziehbare Entscheidungen, saubere Schnittstellen und automatisierte Tests, damit Entwicklung auch langfristig berechenbar bleibt.</p>
+                                <div class="about-list">
+                                    <span>Sauberer, getesteter Code</span>
+                                    <span>Pragmatische Architektur-Entscheidungen</span>
+                                    <span>Transparente Kommunikation</span>
+                                    <span>Enge Zusammenarbeit mit Product & UX</span>
+                                </div>
+                            </div>
+
+                            <div class="card card-muted reveal">
+                                <h3 style="font-size: 0.98rem; margin-bottom: 0.6rem">Kurzprofil</h3>
+                                <div style="display: grid; gap: 0.45rem; font-size: 0.85rem; color: var(--muted)">
+                                    <div>
+                                        <strong>Rollen</strong><br />
+                                        Full-Stack Engineer, Backend Engineer, Tech Lead (projektbezogen)
+                                    </div>
+                                    <div>
+                                        <strong>Domänen</strong><br />
+                                        SaaS-Produkte, interne Tools, B2B-Plattformen, E-Commerce
+                                    </div>
+                                    <div>
+                                        <strong>Arbeitsweise</strong><br />
+                                        Testgetrieben, kollaborativ, dokumentiert, pragmatisch statt dogmatisch
+                                    </div>
+                                    <div>
+                                        <strong>Sprachen</strong><br />
+                                        Deutsch (C2), Englisch (C1)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Skills -->
+                <section id="skills">
+                    <div class="container">
+                        <div class="section-header">
+                            <div class="section-title-block">
+                                <span class="section-kicker">Skills</span>
+                                <h2 class="section-title">Technologien & Schwerpunkte</h2>
+                            </div>
+                            <p class="section-description">Auszug der Technologien, mit denen ich regelmäßig arbeite. Die Liste kann je nach Projekt angepasst werden.</p>
+                        </div>
+
+                        <div class="skills-grid reveal">
+                            <div class="skill-badge">
+                                <span class="skill-name">TypeScript</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">React / Next.js</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">Node.js / NestJS</span>
+                                <span class="skill-level">Senior</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">REST / GraphQL</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">PostgreSQL</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">Testing (Jest, RTL)</span>
+                                <span class="skill-level">Erfahren</span>
+                            </div>
+                            <div class="skill-badge">
+                                <span class="skill-name">CI/CD</span>
+                                <span class="skill-level">Solide</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projekte -->
+                <section id="projects">
+                    <div class="container">
+                        <div class="section-header">
+                            <div class="section-title-block">
+                                <span class="section-kicker">Projekte</span>
+                                <h2 class="section-title">Ausgewählte Arbeiten</h2>
+                            </div>
+                            <p class="section-description">Ein paar Beispiele aus Projekten, in denen ich Konzeption, Implementierung oder technische Leitung übernommen habe.</p>
+                        </div>
+
+                        <div class="projects-grid">
+                            <article class="project-card reveal">
+                                <div class="project-tag">SaaS · B2B</div>
+                                <h3 class="project-title">Analytics-Dashboard für Vertriebsteams</h3>
+                                <p class="project-desc">Entwicklung eines interaktiven Dashboards zur Auswertung von Sales-Daten, inkl. rollenbasiertem Zugriff, Live-Filterung und Export-Funktionen.</p>
+                                <div class="project-meta">
+                                    <div class="project-tech">
+                                        <span>React</span>
+                                        <span>TypeScript</span>
+                                        <span>Node.js</span>
+                                        <span>PostgreSQL</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"> <span>Live</span><span>↗</span> </a>
+                                        <a href="#" class="project-link"> <span>Code</span><span>⌘</span> </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="project-card reveal">
+                                <div class="project-tag">API · Integration</div>
+                                <h3 class="project-title">Zentrale Integrationsplattform</h3>
+                                <p class="project-desc">Design und Implementierung einer Plattform, die verschiedene Drittanbieter-APIs bündelt und einheitlich über REST/GraphQL bereitstellt.</p>
+                                <div class="project-meta">
+                                    <div class="project-tech">
+                                        <span>NestJS</span>
+                                        <span>GraphQL</span>
+                                        <span>Redis</span>
+                                        <span>Docker</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"> <span>Case Study</span><span>↗</span> </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="project-card reveal">
+                                <div class="project-tag">E-Commerce</div>
+                                <h3 class="project-title">Checkout-Optimierung</h3>
+                                <p class="project-desc">Optimierung des Checkout-Flows eines Shops inkl. A/B-Tests, Performance-Tuning und UX-Verbesserungen.</p>
+                                <div class="project-meta">
+                                    <div class="project-tech">
+                                        <span>Next.js</span>
+                                        <span>TypeScript</span>
+                                        <span>Testing</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link"> <span>Mehr Details</span><span>↗</span> </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Erfahrung -->
+                <section id="experience">
+                    <div class="container">
+                        <div class="section-header">
+                            <div class="section-title-block">
+                                <span class="section-kicker">Erfahrung</span>
+                                <h2 class="section-title">Beruflicher Werdegang</h2>
+                            </div>
+                            <p class="section-description">Auszug relevanter Stationen. Vollständige Historie gerne auf Anfrage oder im CV.</p>
+                        </div>
+
+                        <div class="card reveal">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-role">Senior Full-Stack Engineer</div>
+                                    <div class="timeline-company">Beispiel GmbH · Produktunternehmen</div>
+                                    <div class="timeline-meta">2022 – heute · Remote / Hybrid</div>
+                                    <p class="timeline-desc">Verantwortung für Architektur und Umsetzung einer mehrmandantenfähigen SaaS-Plattform. Enge Zusammenarbeit mit Product & Design, Einführung von Code-Reviews und Testing-Standards.</p>
+                                    <div class="timeline-tags">
+                                        <span>TypeScript</span>
+                                        <span>React</span>
+                                        <span>Node.js</span>
+                                        <span>Microservices</span>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-role">Full-Stack Engineer</div>
+                                    <div class="timeline-company">Digitalagentur XYZ</div>
+                                    <div class="timeline-meta">2019 – 2022 · Vor Ort / Remote</div>
+                                    <p class="timeline-desc">Umsetzung von Kundenportalen, internen Tools und Schnittstellenprojekten. Verantwortung für technische Konzeption, Schätzung und Umsetzung.</p>
+                                    <div class="timeline-tags">
+                                        <span>Next.js</span>
+                                        <span>REST APIs</span>
+                                        <span>CI/CD</span>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-role">Softwareentwickler</div>
+                                    <div class="timeline-company">Startup ABC</div>
+                                    <div class="timeline-meta">2016 – 2019 · Vollzeit</div>
+                                    <p class="timeline-desc">Einstieg in die Produktentwicklung, Aufbau der ersten Version eines SaaS-Produkts, Mitarbeit an Architekturentscheidungen und Skalierung.</p>
+                                    <div class="timeline-tags">
+                                        <span>JavaScript</span>
+                                        <span>Node.js</span>
+                                        <span>SQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Kontakt -->
+                <section id="contact">
+                    <div class="container">
+                        <div class="section-header">
+                            <div class="section-title-block">
+                                <span class="section-kicker">Kontakt</span>
+                                <h2 class="section-title">Lass uns sprechen</h2>
+                            </div>
+                            <p class="section-description">Für Projektanfragen, Zusammenarbeit oder Fragen – am besten per E-Mail oder über das Formular.</p>
+                        </div>
+
+                        <div class="contact-grid">
+                            <div class="card contact-details reveal">
+                                <h3 style="font-size: 0.98rem; margin-bottom: 0.5rem">Rahmenbedingungen</h3>
+                                <p>Ich bin offen für freiberufliche Projekte, Festanstellungen (remote/hybrid) und technische Sparring- oder Architektur-Reviews.</p>
+
+                                <div class="contact-list">
+                                    <div class="contact-item">
+                                        <span class="icon">✉</span>
+                                        <span> <strong>E-Mail:</strong> <a href="mailto:dein.name@example.com">dein.name@example.com</a> </span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <span class="icon">🌐</span>
+                                        <span> <strong>GitHub:</strong> <a href="https://github.com/dein-github" target="_blank">github.com/dein-github</a> </span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <span class="icon">💼</span>
+                                        <span> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/dein-profil" target="_blank">linkedin.com/in/dein-profil</a> </span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <span class="icon">📍</span>
+                                        <span>Standort: Deine Stadt · Remote europaweit möglich</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card card-muted reveal">
+                                <h3 style="font-size: 0.98rem; margin-bottom: 0.5rem">Kurze Nachricht schreiben</h3>
+                                <form class="contact-form" onsubmit="event.preventDefault(); alert('Dies ist ein statisches Demo-Formular.');">
+                                    <div class="field">
+                                        <label for="name">Name</label>
+                                        <input id="name" name="name" type="text" placeholder="Ihr Name" />
+                                    </div>
+                                    <div class="field">
+                                        <label for="email">E-Mail</label>
+                                        <input id="email" name="email" type="email" placeholder="ihre.adresse@example.com" />
+                                    </div>
+                                    <div class="field">
+                                        <label for="message">Nachricht</label>
+                                        <textarea id="message" name="message" rows="4" placeholder="Kurze Beschreibung zu Projekt, Umfang und Timing."></textarea>
+                                    </div>
+                                    <button class="btn btn-primary" type="submit">
+                                        <span>Nachricht senden</span>
+                                        <span class="btn-icon">➜</span>
+                                    </button>
+                                    <p class="contact-note">Hinweis: Dieses Formular ist in diesem Beispiel statisch. In einem echten Projekt kann hier z. B. ein Mail-Service oder ein Backend angebunden werden.</p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="footer">
+                <div class="container footer-inner">
+                    <div>© <span id="year"></span> Dein Name. Alle Rechte vorbehalten.</div>
+                    <div class="footer-links">
+                        <a href="#top">Nach oben</a>
+                        <a href="#projects">Projekte</a>
+                        <a href="#contact">Kontakt</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <script>
+            // Aktuelles Jahr im Footer setzen
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            // Reveal-Effekte beim Scrollen
+            const revealElements = document.querySelectorAll(".reveal");
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.16 }
+            );
+
+            revealElements.forEach((el) => observer.observe(el));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+/* ===== Parameters ===== */
+
+:root {
+    --BackgroundColor1: #0a0b1a;
+    --BackgroundColor2: #14172a;
+    --PrimaryColor1: #b46bff;
+    --PrimaryColor2: #4f9eff;
+    --GlassColor: rgba(255, 255, 255, 0.07);
+    --HueColor1: 265;
+    --HueColor2: 220;
+}
+
+/* ===== Basics ===== */
+
+body {
+    font-family: Inter system-ui, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ===== Background ===== */
+
+#Background {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    background: radial-gradient(120vmax 120vmax at 10% 10%, var(--BackgroundColor2), transparent 60%), radial-gradient(120vmax 120vmax at 90% 90%, #0b0e22, transparent 60%), linear-gradient(180deg, var(--BackgroundColor1), #0b0d1f);
+    isolation: isolate;
+}
+
+.BackgroundGradient {
+    position: absolute;
+    inset: -50vmax;
+    background: radial-gradient(closest-side at 30% 30%, hsla(var(--HueColor1), 70%, 55%, 0.35), transparent 60%), radial-gradient(closest-side at 70% 70%, hsla(var(--HueColor2), 70%, 55%, 0.35), transparent 60%),
+        radial-gradient(closest-side at 80% 20%, hsla(calc(var(--HueColor1) - 20), 70%, 55%, 0.25), transparent 60%), radial-gradient(closest-side at 20% 80%, hsla(calc(var(--HueColor2) + 20), 70%, 50%, 0.2), transparent 60%);
+    filter: blur(40px) saturate(120%);
+    animation: BackcgroundSlide 32s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes BackcgroundSlide {
+    0% {
+        transform: translate3d(-6%, -4%, 0) rotate(-2deg) scale(1.05);
+    }
+    50% {
+        transform: translate3d(6%, 4%, 0) rotate(2deg) scale(1.06);
+    }
+    100% {
+        transform: translate3d(-3%, 3%, 0) rotate(-1deg) scale(1.04);
+    }
+}
+
+.BackgroundBlobs {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.BackgroundBlob {
+    position: absolute;
+    left: calc(var(--CoordX) * 1vw);
+    top: calc(var(--CoordY) * 1vh);
+    width: calc(var(--Size) * 1vmin);
+    height: calc(var(--Size) * 1vmin);
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, hsla(var(--Hue), 80%, 60%, 0.55), transparent 60%);
+    filter: blur(30px);
+    mix-blend-mode: screen;
+    animation: BackgroundBlobFloat var(--Duration) s ease-in-out calc(var(--Delay) * 1s) infinite alternate;
+}
+
+@keyframes BackgroundBlobFloat {
+    from {
+        transform: translate3d(-4vmin, -3vmin, 0) scale(0.95);
+    }
+    to {
+        transform: translate3d(4vmin, 3vmin, 0) scale(1.05);
+    }
+}
+
+#BackgroundStars {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .BackgroundGradient,
+    .BackgroundBlob {
+        animation: none;
+    }
+}
