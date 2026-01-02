@@ -4,16 +4,25 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Portfolio - DerGaijin</title>
+
+        <!-- Tailwind CSS -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <style type="text/tailwindcss"></style>
+
+        <!-- Font Awesome -->
         <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/fontawesome.min.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="./style.css" />
-        <script src="./Content.js"></script>
-        <script src="./script.js"></script>
+        <!-- Inter Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+        <!-- Scripts and Style -->
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css" />
     </head>
-    <body>
+    <body class="flex dark:text-white flex-col items-center m-5 @container">
         <!-- Background -->
         <div id="Background">
             <div class="BackgroundGradient" aria-hidden="true"></div>
@@ -28,76 +37,356 @@
         </div>
 
         <!-- Header -->
-        <header id="MainHeader" class="Section Flippable">
-            <div class="MH_Left">
-                <p id="MH_PreTitle">Hallo, Ich bin</p>
-                <h1 id="MH_Title">DerGaijin</h1>
-                <h2 id="MH_SubTitle">Ein <b>Software Entwickler</b> & <b>System Administrator</b></h2>
-            </div>
-            <div class="MH_Right">
-                <img src="https://avatars.githubusercontent.com/u/44649120" alt="Avatar" id="HeaderAvatar" />
+        <header class="LangSwitch relative w-full max-w-6xl p-14 overflow-hidden rounded-t-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse"></div>
+            <div class="relative text-center">
+                <h1 id="HeaderTitle" class="text-6xl font-extrabold tracking-tight mt-2 bg-gradient-to-r from-purple-300 via-indigo-300 to-blue-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(120,80,255,0.55)] [text-shadow:0_0_15px_rgba(140,100,255,0.6)]">DerGaijin</h1>
+                <p class="mt-4 text-xl text-gray-200/90 font-light" ContentID="HeaderDescription">Software Entwickler & System Administrator</p>
             </div>
         </header>
 
         <!-- Navigation -->
-        <nav id="MainNavigation" class="Section Flippable">
-            <a class="MN_Item" href="#Section_Timeline">
-                <i class="MH_NavItem_Icon fa-solid fa-timeline"></i>
-                <p>Lebenslauf</p>
-            </a>
-            <a class="MN_Item" href="#Section_Skills">
-                <i class="MH_NavItem_Icon fa-solid fa-book"></i>
-                <p>Fähigkeiten</p>
-            </a>
-            <a class="MN_Item" href="#Section_WorkProjects">
-                <i class="MH_NavItem_Icon fa-solid fa-briefcase"></i>
-                <p>Arbeits Projekte</p>
-            </a>
-            <a class="MN_Item" href="#Section_HobbyProjects">
-                <i class="MH_NavItem_Icon fa-solid fa-dice"></i>
-                <p>Hobby Projekte</p>
-            </a>
-            <a class="MN_Item" href="#Section_TechStack">
-                <i class="MH_NavItem_Icon fa-solid fa-microchip"></i>
-                <p>Techstack</p>
-            </a>
-            <a id="MH_ChangeLang" class="MN_Item" onclick="SelectLanguage('ENG')">
-                <i class="MH_NavItem_Icon fa-solid fa-globe"></i>
-                <p>English Version</p>
-            </a>
+        <nav class="LangSwitch sticky top-0 z-40 w-full max-w-6xl mb-2 p-4 rounded-b-4xl border-1 border-t-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <ul class="w-full flex flex-wrap justify-evenly">
+                <a href="#AboutMe" class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-user pr-1"></i>
+                    <p ContentID="Nav1">Über Mich</p>
+                </a>
+                <a href="#Timeline" class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-timeline pr-1"></i>
+                    <p ContentID="Nav2">Lebenslauf</p>
+                </a>
+                <a href="#WorkProjects" class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-briefcase pr-1"></i>
+                    <p ContentID="Nav3">Arbeitsprojekte</p>
+                </a>
+                <a href="#HobbyProjects" class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-dice pr-1"></i>
+                    <p ContentID="Nav4">Hobby Projekte</p>
+                </a>
+                <a href="#Techstack" class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-microchip pr-1"></i>
+                    <p ContentID="Nav5">Techstack</p>
+                </a>
+                <button class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer" onclick="TranslateContent()">
+                    <i class="fa-solid fa-globe pr-1"></i>
+                    <p ContentID="Nav6">English Version</p>
+                </button>
+            </ul>
         </nav>
 
-        <!-- Timeline -->
-        <section id="Section_Timeline" class="Section Flippable">
-            <h2 class="Section_Title">Timeline</h2>
-            <ul id="List_Timeline"></ul>
+        <!-- Über Mich und Meine Besonderheit -->
+        <section id="AboutMe" class="w-full md:flex flex-row max-w-6xl scroll-mt-20">
+            <section class="LangSwitch w-full max-w-6xl mr-2 mt-2 mb-2 p-8 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+                <h2 class="mb-5 pb-1 border-b-2 text-center text-2xl" ContentID="AboutMe_Header">Über Mich</h2>
+                <p ContentID="AboutMe_Text">Content</p>
+            </section>
+            <section class="LangSwitch w-full max-w-6xl ml-2 mt-2 mb-2 p-8 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+                <h2 class="mb-5 pb-1 border-b-2 text-center text-2xl" ContentID="SpecialAbility_Header">Meine Besonderheit</h2>
+                <p ContentID="SpecialAbility_Text">Content</p>
+            </section>
         </section>
 
-        <!-- Skills -->
-        <section id="Section_Skills" class="Section Flippable">
-            <h2 class="Section_Title">Fähigkeiten</h2>
-            <ul id="List_Skills"></ul>
+        <!-- Lebenslauf -->
+        <section id="Timeline" class="LangSwitch w-full max-w-6xl mt-2 mb-2 p-8 scroll-mt-20 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <h2 class="mb-5 pb-1 border-b-2 text-center text-2xl" ContentID="Timeline_Header">Lebenslauf</h2>
+            <ul>
+                <li class="flex">
+                    <div class="relative w-4 border-l-2">
+                        <i class="absolute w-4 h-4 top-4 -left-2 bg-white rounded-4xl"></i>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-gamepad fa-2xl mr-3"></i>
+                            <div>
+                                <h3 ContentID="Timeline1_Header">Anfang mit Unreal Engine</h3>
+                                <h4>2023</h4>
+                            </div>
+                        </div>
+                        <p class="pb-5" ContentID="Timeline1_Text">Hier ist content</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <div class="relative w-4 border-l-2">
+                        <i class="absolute w-4 h-4 top-4 -left-2 bg-white rounded-4xl"></i>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-square-binary fa-2xl mr-3"></i>
+                            <div>
+                                <h3 ContentID="Timeline2_Header">Weiter mit C++</h3>
+                                <h4>2023</h4>
+                            </div>
+                        </div>
+                        <p class="pb-5" ContentID="Timeline2_Text">Hier ist content</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <div class="relative w-4 border-l-2">
+                        <i class="absolute w-4 h-4 top-4 -left-2 bg-white rounded-4xl"></i>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-graduation-cap fa-2xl mr-3"></i>
+                            <div>
+                                <h3 ContentID="Timeline3_Header">Ausbildung</h3>
+                                <h4>2023</h4>
+                            </div>
+                        </div>
+                        <p class="pb-5" ContentID="Timeline3_Text">Hier ist content</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <div class="relative w-4 border-l-2">
+                        <i class="absolute w-4 h-4 top-4 -left-2 bg-white rounded-4xl"></i>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-gun fa-2xl mr-3"></i>
+                            <div>
+                                <h3 ContentID="Timeline4_Header">Lasertag</h3>
+                                <h4>2023</h4>
+                            </div>
+                        </div>
+                        <p class="pb-5" ContentID="Timeline4_Text">Hier ist content</p>
+                    </div>
+                </li>
+                <li class="flex">
+                    <div class="relative w-4 border-l-2">
+                        <i class="absolute w-4 h-4 top-4 -left-2 bg-white rounded-4xl"></i>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex items-center">
+                            <i class="fa-solid fa-briefcase fa-2xl mr-3"></i>
+                            <div>
+                                <h3 ContentID="Timeline5_Header">Praktikum</h3>
+                                <h4>2023</h4>
+                            </div>
+                        </div>
+                        <p class="pb-5" ContentID="Timeline5_Text">Hier ist content</p>
+                    </div>
+                </li>
+            </ul>
         </section>
 
-        <!-- Work Projects -->
-        <section id="Section_WorkProjects" class="Section Flippable">
-            <h2 class="Section_Title">Arbeitsprojekte</h2>
-            <ul id="List_WorkProjects" class="ProjectCardList"></ul>
+        <!-- Arbeitsprojekte -->
+        <section id="WorkProjects" class="LangSwitch w-full max-w-6xl mt-2 mb-2 p-8 scroll-mt-20 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <h2 class="mb-5 pb-1 border-b-2 text-center text-2xl" ContentID="WorkProjects_Header">Arbeitsprojekte</h2>
+            <ul>
+                <li>
+                    <h3 class="text-xl" ContentID="WorkProject1_Header">Verkehrssimulation</h3>
+                    <div class="lg:flex">
+                        <p ContentID="WorkProject1_Text">Text</p>
+                        <img src="Simulation2.png" alt="Simulation" class="p-5 h-50 justify-self-center" />
+                    </div>
+
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Unreal Engine</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">C++</li>
+                    </ul>
+                </li>
+
+                <li class="mt-5">
+                    <h3 class="text-xl" ContentID="WorkProject2_Header">Multimodaler Chatbot</h3>
+                    <div class="lg:flex">
+                        <p ContentID="WorkProject2_Text">Text</p>
+                        <img src="ChatBot.gif" alt="ChatBot" class="p-5 h-50 justify-self-center" />
+                    </div>
+
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Python</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">OpenAI</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Ollama</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Mediapipe</li>
+                    </ul>
+                </li>
+
+                <li class="mt-5">
+                    <h3 class="text-xl" ContentID="WorkProject3_Header">Lasertag Webseite</h3>
+                    <p ContentID="WorkProject3_Text">Text</p>
+                    <a href="https://verden-lasertag.de/" class="inline-flex items-center pt-2 pb-2 hover:underline text-blue-500">
+                        <p ContentID="WorkProject3_Link">Webseite Besuchen</p>
+                        <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778" />
+                        </svg>
+                    </a>
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">HTML</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">CSS</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Javascript</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
-        <!-- Hobby Projects -->
-        <section id="Section_HobbyProjects" class="Section Flippable">
-            <h2 class="Section_Title">Hobby Projekte</h2>
-            <ul id="List_HobbyProjects" class="ProjectCardList"></ul>
+        <!-- Hobby Projekte -->
+        <section id="HobbyProjects" class="LangSwitch w-full max-w-6xl mt-2 mb-2 p-8 scroll-mt-20 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <h2 class="mb-5 pb-1 border-b-2 text-center text-2xl" ContentID="HobbyProjects_Header">Hobby projekte</h2>
+            <ul>
+                <li>
+                    <h3 class="text-xl" ContentID="HobbyProject1_Header">Game Engine</h3>
+                    <div class="lg:flex">
+                        <p ContentID="HobbyProject1_Text">Text</p>
+                        <img src="GameEngine.png" alt="GameEngine" class="p-5 h-50 justify-self-center" />
+                    </div>
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">C++</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Vulkan</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">DirectX12</li>
+                    </ul>
+                </li>
+
+                <li class="mt-5">
+                    <h3 class="text-xl" ContentID="HobbyProject2_Header">MQL Language Erweiterung</h3>
+                    <p ContentID="HobbyProject2_Text">Text</p>
+                    <a href="" class="inline-flex items-center pt-2 pb-2 hover:underline text-blue-500">
+                        <p ContentID="HobbyProject2_Link">Auf Marktplatz ansehen</p>
+                        <svg class="w-4 h-4 ms-2 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778" />
+                        </svg>
+                    </a>
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">MQL5</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Javascript</li>
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">Visual Studio Code</li>
+                    </ul>
+                </li>
+
+                <li class="mt-5">
+                    <h3 class="text-xl" ContentID="HobbyProject3_Header">Reflection System</h3>
+                    <p ContentID="HobbyProject3_Text">Text</p>
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">C++</li>
+                    </ul>
+                </li>
+
+                <li class="mt-5">
+                    <h3 class="text-xl" ContentID="HobbyProject4_Header">C++ Preprocessor</h3>
+                    <p ContentID="HobbyProject4_Text">Text</p>
+                    <ul class="flex flex-wrap gap-2 mt-2 text-gray-300">
+                        <li class="p-1 pl-4 pr-4 border-1 rounded-4xl text-xs">C++</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
-        <!-- Tech Stack -->
-        <section id="Section_TechStack" class="Section Flippable">
-            <h2 class="Section_Title">Techstack</h2>
-            <ul id="List_Techstack"></ul>
+        <!-- Techstack -->
+        <section id="Techstack" class="LangSwitch w-full max-w-6xl mt-2 mb-2 p-8 scroll-mt-20 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <h2 class="mb-5 pb-1 border-b-2 text-center text-2xl">Techstack</h2>
+            <div class="flex">
+                <h3 class="w-25 pt-4 font-bold">Frontend</h3>
+                <ul class="w-full flex flex-wrap pt-4 pb-2 gap-3">
+                    <a href="https://de.wikipedia.org/wiki/C-Sharp" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="Icon" />
+                        <p class="ml-1">C#</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Unreal_Engine" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg" alt="Icon" />
+                        <p class="ml-1">Unreal Engine</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/HTML5" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="Icon" />
+                        <p class="ml-1">HTML5</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Cascading_Style_Sheets" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="Icon" />
+                        <p class="ml-1">CSS3</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/JavaScript" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="Icon" />
+                        <p class="ml-1">Javascript</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Python_(Programmiersprache)" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Icon" />
+                        <p class="ml-1">Python</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Java_(Programmiersprache)" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Icon" />
+                        <p class="ml-1">Java</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Vulkan_(API)" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vulkan/vulkan-original.svg" alt="Icon" />
+                        <p class="ml-1">Vulkan</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/DirectX#DirectX_11" class="w-40 flex items-center">
+                        <img class="w-7" src="https://e7.pngegg.com/pngimages/845/68/png-clipart-directx-direct3d-11-computer-icons-windows-7-direct-selling-software-logo-windows.png" alt="Icon" />
+                        <p class="ml-1">DirectX11</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/DirectX#DirectX_12" class="w-40 flex items-center">
+                        <img class="w-7" src="https://upload.wikimedia.org/wikipedia/commons/6/67/DirectX_12_Ultimate.png" alt="Icon" />
+                        <p class="ml-1">DirectX12</p>
+                    </a>
+
+                    <a href="https://en.wikipedia.org/wiki/Electron_(software_framework)" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg" alt="Icon" />
+                        <p class="ml-1">Electron</p>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="flex">
+                <h3 class="w-25 pt-4 font-bold">Backend</h3>
+                <ul class="w-full flex flex-wrap pt-4 pb-2 gap-3">
+                    <a href="https://de.wikipedia.org/wiki/C%2B%2B" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="Icon" />
+                        <p class="ml-1">C++</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/PHP" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="Icon" />
+                        <p class="ml-1">PHP</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Node.js" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Icon" />
+                        <p class="ml-1">NodeJS</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/MetaQuotes_Language_MQL4/MQL5" class="w-40 flex items-center">
+                        <img class="w-7" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/MQL5_Community_Logo.png" alt="Icon" />
+                        <p class="ml-1">MQL5</p>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="flex">
+                <h3 class="w-25 pt-4 font-bold">Tools</h3>
+                <ul class="w-full flex flex-wrap pt-4 pb-2 gap-3">
+                    <a href="https://de.wikipedia.org/wiki/Visual_Studio_Code" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Icon" />
+                        <p class="ml-1">VS Code</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Visual_Studio" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg" alt="Icon" />
+                        <p class="ml-1">Visual Studio</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/Git" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Icon" />
+                        <p class="ml-1">Git</p>
+                    </a>
+
+                    <a href="https://de.wikipedia.org/wiki/GitHub" class="w-40 flex items-center">
+                        <img class="w-7" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Icon" />
+                        <p class="ml-1">Github</p>
+                    </a>
+                </ul>
+            </div>
         </section>
 
         <!-- Footer -->
-        <footer id="MainFooter" class="Section">Copyright © 2025 DerGaijin. All rights reserved.</footer>
+        <footer class="LangSwitch w-full max-w-6xl mt-2 mb-2 p-4 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+            <div class="text-center">Copyright © <y id="CopyrightYear">2020</y> DerGaijin. All rights reserved.</div>
+        </footer>
     </body>
 </html>
