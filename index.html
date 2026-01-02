@@ -22,7 +22,7 @@
         <script src="script.js"></script>
         <link rel="stylesheet" href="style.css" />
     </head>
-    <body class="flex dark:text-white flex-col items-center m-5 @container">
+    <body class="flex dark:text-white flex-col items-center m-5">
         <!-- Background -->
         <div id="Background">
             <div class="BackgroundGradient" aria-hidden="true"></div>
@@ -40,13 +40,14 @@
         <header class="LangSwitch relative w-full max-w-6xl p-14 overflow-hidden rounded-t-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
             <div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-pulse"></div>
             <div class="relative text-center">
-                <h1 id="HeaderTitle" class="text-6xl font-extrabold tracking-tight mt-2 bg-gradient-to-r from-purple-300 via-indigo-300 to-blue-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(120,80,255,0.55)] [text-shadow:0_0_15px_rgba(140,100,255,0.6)]">DerGaijin</h1>
+                <!-- <h1 id="HeaderTitle" class="text-6xl font-extrabold tracking-tight mt-2 bg-gradient-to-r from-purple-300 via-indigo-300 to-blue-300 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(120,80,255,0.55)] [text-shadow:0_0_15px_rgba(140,100,255,0.6)]">DerGaijin</h1> -->
+                <h1 id="HeaderTitle" class="text-6xl font-extrabold tracking-tight mt-2 text-cyan">DerGaijin</h1>
                 <p class="mt-4 text-xl text-gray-200/90 font-light" ContentID="HeaderDescription">Software Entwickler & System Administrator</p>
             </div>
         </header>
 
         <!-- Navigation -->
-        <nav class="LangSwitch sticky top-0 z-40 w-full max-w-6xl mb-2 p-4 rounded-b-4xl border-1 border-t-0 border-gray-700 bg-black/40 backdrop-blur-xs">
+        <nav class="LangSwitch md:sticky top-0 z-40 w-full max-w-6xl mb-2 p-4 rounded-b-4xl border-1 border-t-0 border-gray-700 bg-black/40 backdrop-blur-xs">
             <ul class="w-full flex flex-wrap justify-evenly">
                 <a href="#AboutMe" class="flex items-center p-2 pr-5 pl-5 rounded-xl hover:bg-gray-600 hover:shadow-sm cursor-pointer">
                     <i class="fa-solid fa-user pr-1"></i>
@@ -100,7 +101,7 @@
                             <i class="fa-solid fa-gamepad fa-2xl mr-3"></i>
                             <div>
                                 <h3 ContentID="Timeline1_Header">Anfang mit Unreal Engine</h3>
-                                <h4>2023</h4>
+                                <h4>2014</h4>
                             </div>
                         </div>
                         <p class="pb-5" ContentID="Timeline1_Text">Hier ist content</p>
@@ -115,7 +116,7 @@
                             <i class="fa-solid fa-square-binary fa-2xl mr-3"></i>
                             <div>
                                 <h3 ContentID="Timeline2_Header">Weiter mit C++</h3>
-                                <h4>2023</h4>
+                                <h4>2015</h4>
                             </div>
                         </div>
                         <p class="pb-5" ContentID="Timeline2_Text">Hier ist content</p>
@@ -145,7 +146,7 @@
                             <i class="fa-solid fa-gun fa-2xl mr-3"></i>
                             <div>
                                 <h3 ContentID="Timeline4_Header">Lasertag</h3>
-                                <h4>2023</h4>
+                                <h4>2024</h4>
                             </div>
                         </div>
                         <p class="pb-5" ContentID="Timeline4_Text">Hier ist content</p>
@@ -160,7 +161,7 @@
                             <i class="fa-solid fa-briefcase fa-2xl mr-3"></i>
                             <div>
                                 <h3 ContentID="Timeline5_Header">Praktikum</h3>
-                                <h4>2023</h4>
+                                <h4>2025</h4>
                             </div>
                         </div>
                         <p class="pb-5" ContentID="Timeline5_Text">Hier ist content</p>
@@ -386,7 +387,10 @@
 
         <!-- Footer -->
         <footer class="LangSwitch w-full max-w-6xl mt-2 mb-2 p-4 rounded-4xl border-1 border-b-0 border-gray-700 bg-black/40 backdrop-blur-xs">
-            <div class="text-center">Copyright © <y id="CopyrightYear">2020</y> DerGaijin. All rights reserved.</div>
+            <div class="text-center flex flex-wrap justify-center">
+                <p class="inline">Copyright © <y id="CopyrightYear">2020</y> DerGaijin.</p>
+                <p class="inline">All rights reserved.</p>
+            </div>
         </footer>
     </body>
 </html>
