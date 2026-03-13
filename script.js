@@ -42,6 +42,7 @@ const Content_GER = {
     HobbyProject1_Header: "Game Engine",
     HobbyProject1_Text:
         "Die Game Engine ist ein Prototyp einer modernen, modularen Entwicklungsplattform für interaktive Echtzeitanwendungen. Sie wird in C++ entwickelt und unterstützt mit Vulkan, DirectX12 und DirectX11 aktuelle Low-Level-Grafik-APIs für ein performantes, hardwarenahes Rendering. Der Fokus liegt auf einer klaren, erweiterbaren Architektur, die eine effiziente Trennung von Engine-Logik und Rendering ermöglicht. Eine abstrahierte Rendering-Schicht erlaubt die flexible Nutzung beider APIs, während ein zentrales Ressourcenmanagement den effizienten Umgang mit Assets sicherstellt. Der Prototyp bildet eine stabile technische Basis für zukünftige Erweiterungen und legt besonderen Wert auf Performance, Wartbarkeit und Skalierbarkeit.",
+    HobbyProject1_Link: "Auf Github ansehen",
     HobbyProject2_Header: "MQL Sprache Erweiterung",
     HobbyProject2_Text:
         "Die MQL Sprache Erweiterung ist eine Visual Studio Code Extension zur technischen Integration der Programmiersprachen MQL4 und MQL5. Sie implementiert sprachspezifische Funktionen wie Syntax-Parsing, semantische Codeanalyse, IntelliSense, Diagnostikmeldungen sowie Snippet- und Symbolunterstützung. Die Erweiterung nutzt die VS-Code-Extension-API und ist auf Erweiterbarkeit, Performance und stabile Editor-Integration ausgelegt, um eine effiziente Entwicklung von MQL-basierten Expert Advisors, Indikatoren und Skripten zu ermöglichen.",
@@ -100,6 +101,7 @@ const Content_ENG = {
     HobbyProject1_Header: "Game Engine",
     HobbyProject1_Text:
         "The game engine is a prototype of a modern, modular development platform for interactive real-time applications. It is written in C++ and supports contemporary low-level graphics APIs—Vulkan, DirectX 12, and DirectX 11—to deliver high-performance, hardware-near rendering. Its design emphasizes a clean, extensible architecture that enables a clear and efficient separation between core engine logic and rendering. An abstracted rendering layer allows flexible use of multiple graphics APIs, while a centralized resource management system ensures efficient handling of assets. The prototype provides a solid technical foundation for future expansion, with a strong focus on performance, maintainability, and scalability.",
+    HobbyProject1_Link: "View on Github",
     HobbyProject2_Header: "MQL Language Extension",
     HobbyProject2_Text:
         "The MQL Language Extension is a Visual Studio Code extension designed for the technical integration of the MQL4 and MQL5 programming languages. It provides language-specific capabilities such as syntax parsing, semantic code analysis, IntelliSense, diagnostic reporting, as well as snippet and symbol support. Built on the VS Code Extension API, the extension is optimized for extensibility, performance, and stable editor integration, enabling efficient development of MQL-based Expert Advisors, indicators, and scripts.",
